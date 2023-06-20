@@ -1,7 +1,7 @@
 import * as reporter from "./reporter";
 import * as utils_common from "./utils_common";
 
-const { remote } = require("webdriverio");
+import { remote } from "webdriverio";
 const Appium = require("appium");
 
 export let driver: any;
@@ -17,13 +17,17 @@ export async function launch_server() {
         address: "0.0.0.0",
         port: 2869,
     };
-    server = await Appium.main(args);
-    await reporter.info("Appium server is up.");
+    try {
+        server = await Appium.main(args);
+        await reporter.info("Appium server is up.");
+    } catch (error) {
+        await reporter.fail("Failed to launch appium server.");
+    }
 
     await reporter.exit_log("launch_server");
 }
 
-export async function launch(app: string) {
+export async function launch(app: string, launch_activity: string) {
     await reporter.exit_log("launch");
 
     let driver_options: any;
@@ -33,32 +37,33 @@ export async function launch(app: string) {
             "appium:automationName": "UiAutomator2",
             "appium:deviceName": device.name,
             "appium:appPackage": app,
-            "appium:appActivity": "com.android.settings.Settings",
+            "appium:appActivity": launch_activity,
         };
         driver_options = {
             address: "0.0.0.0",
             port: 2869,
             capabilities: android_capabilities,
         };
+        driver = await remote(driver_options);
+        await driver.startRecordingScreen();
+        await utils_common.sleep(3);
+        await reporter.pass("App [ " + app + " ] launched.", true);
     } else if (device.platform == "ios") {
-        // const ios_capabilities: any = {
-        //     platformName: "iOS",
-        //     "appium:automationName": "XCUITest",
-        //     "appium:deviceName": device.name,
-        // };
-        // driver_options = {
-        //     address: "0.0.0.0",
-        //     port: 2869,
-        //     capabilities: ios_capabilities,
-        // };
+        const ios_capabilities: any = {
+            platformName: "iOS",
+            "appium:automationName": "XCUITest",
+            "appium:deviceName": device.name,
+        };
+        driver_options = {
+            address: "0.0.0.0",
+            port: 2869,
+            capabilities: ios_capabilities,
+        };
         await reporter.fail("IOS not supported yet.");
     } else {
         await reporter.fail("Please select valid platform in appium-runner.txt !!!");
         return;
     }
-    driver = await remote(driver_options);
-    await utils_common.sleep(3);
-    await reporter.pass("App [ " + app + " ] launched.", true);
 
     await reporter.exit_log("launch");
     return;

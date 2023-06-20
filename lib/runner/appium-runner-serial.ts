@@ -50,7 +50,7 @@ function run_spec() {
 
     for (let i = 0; i < spec_array_with_result_folder.length; i++) {
         if (spec_array_with_result_folder[i].split(" => ").length == 5) {
-            let baseCommand = "npx mocha --require 'ts-node/register' --platform android --device emulator-5554 --diff true --full-trace true --no-timeouts --reporter mochawesome --reporter-options 'reportDir=results/_serial/TEMP_RESULT_FOLDER_TEMP,reportFilename='appium-report',reportPageTitle='" + spec_array_with_result_folder[i].split(" => ")[3] + "',embeddedScreenshots=true,charts=true,html=true,json=false,overwrite=true,inlineAssets=true,saveAllAttempts=false,code=false,quiet=false,ignoreVideos=true,showPending=true,autoOpen=false' --spec ";
+            let baseCommand = "npx mocha --require 'ts-node/register' --platform android --device emulator-5554 --diff true --full-trace true --no-timeouts --reporter mochawesome --reporter-options 'reportDir=results/_serial/TEMP_RESULT_FOLDER_TEMP,reportFilename='appium-report',reportPageTitle='" + spec_array_with_result_folder[i].split(" => ")[4] + "',embeddedScreenshots=true,charts=true,html=true,json=false,overwrite=true,inlineAssets=true,saveAllAttempts=false,code=false,quiet=false,ignoreVideos=true,showPending=true,autoOpen=false' --spec ";
 
             baseCommand = baseCommand.replace("--platform android", "--platform " + spec_array_with_result_folder[i].split(" => ")[0]);
             baseCommand = baseCommand.replace("--device emulator-5554", "--device " + spec_array_with_result_folder[i].split(" => ")[1]);

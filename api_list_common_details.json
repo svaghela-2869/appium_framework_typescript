@@ -26,11 +26,6 @@
             "path": "lib/commom/uihelper"
         },
         {
-            "description": "Wait for page to load completely.",
-            "name": "wait_for_page_to_load",
-            "path": "lib/commom/uihelper"
-        },
-        {
             "description": "Waiting for element to be present on page.",
             "name": "wait_for_element_to_be_present_on_ui",
             "path": "lib/commom/uihelper"
