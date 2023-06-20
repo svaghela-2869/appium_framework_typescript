@@ -1,0 +1,39 @@
+{
+    "apis": [
+        {
+            "description": "Launch App.",
+            "name": "launch_app",
+            "path": "lib/commom/uihelper"
+        },
+        {
+            "description": "Verify read only text on page.",
+            "name": "verify_read_only_text",
+            "path": "lib/commom/uihelper"
+        },
+        {
+            "description": "Set value on XPath.",
+            "name": "set_text_with_xpath",
+            "path": "lib/commom/uihelper"
+        },
+        {
+            "description": "Click on XPath.",
+            "name": "click_with_xpath",
+            "path": "lib/commom/uihelper"
+        },
+        {
+            "description": "Sleep.",
+            "name": "sleep",
+            "path": "lib/commom/uihelper"
+        },
+        {
+            "description": "Wait for page to load completely.",
+            "name": "wait_for_page_to_load",
+            "path": "lib/commom/uihelper"
+        },
+        {
+            "description": "Waiting for element to be present on page.",
+            "name": "wait_for_element_to_be_present_on_ui",
+            "path": "lib/commom/uihelper"
+        }
+    ]
+}

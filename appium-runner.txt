@@ -1,0 +1,8 @@
+## before => platform name
+## between => => device name ( get from "adb devices" )
+## after => spec runner path "relative path from project folder"
+## 
+## example mac : android => emulator-5554 => specs/_demo/setting_app.spec.ts
+## example windows : android => emulator-5554 => specs\_demo\setting_app.spec.ts
+## 
+android => emulator-5554 => specs/_demo/setting_app.spec.ts

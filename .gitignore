@@ -1,0 +1,6 @@
+package-lock.json
+node_modules
+results
+run.txt
+
+.DS_Store

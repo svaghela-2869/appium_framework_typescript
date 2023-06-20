@@ -1,0 +1,41 @@
+{
+    "name": "appium_framework_typescript",
+    "version": "1.0.0",
+    "description": "Appium framework with typescript to automate mobile apps.",
+    "keywords": [],
+    "license": "ISC",
+    "author": "",
+    "main": "index.js",
+    "scripts": {
+        "android-act": "adb shell dumpsys window | grep -E 'mCurrentFocus'",
+        "test": "bash 'lib/runner/runner.sh'"
+    },
+    "devDependencies": {
+        "@appium/doctor": "^2.0.19",
+        "@types/chai": "^4.3.5",
+        "@types/mocha": "^10.0.1",
+        "@types/mochawesome": "^6.2.1",
+        "@types/selenium-webdriver": "^4.1.14",
+        "@types/yargs": "^17.0.24",
+        "appium": "^2.0.0-beta.71",
+        "appium-uiautomator2-driver": "^2.26.0",
+        "appium-xcuitest-driver": "^4.31.0",
+        "chai": "^4.3.7",
+        "dateformat": "4.6.3",
+        "fs": "^0.0.1-security",
+        "json-sort-cli": "^3.1.3",
+        "lodash": "^4.17.21",
+        "log4js": "^6.9.1",
+        "mocha": "^10.2.0",
+        "mochawesome": "^7.1.3",
+        "papaparse": "^5.4.1",
+        "path": "^0.12.7",
+        "prettier": "^2.8.8",
+        "selenium": "^2.20.0",
+        "selenium-webdriver": "^4.9.2",
+        "ts-node": "^10.9.1",
+        "typescript": "^5.0.4",
+        "webdriverio": "^8.11.2",
+        "yargs": "^17.7.2"
+    }
+}

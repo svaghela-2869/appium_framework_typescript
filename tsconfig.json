@@ -1,0 +1,19 @@
+{
+    "compilerOptions": {
+        "allowJs": false,
+        "baseUrl": ".",
+        "lib": ["ESNext"],
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "noImplicitAny": false,
+        "noImplicitReturns": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "strict": true,
+        "target": "ESNext",
+        "typeRoots": ["./node_modules/@types"],
+        "types": ["mocha", "node", "chai"]
+    },
+    "exclude": ["**/node_modules/**"],
+    "include": ["**/*.ts"]
+}
