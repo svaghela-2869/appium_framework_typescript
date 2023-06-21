@@ -18,7 +18,7 @@ function run_spec() {
 
         console.log(spec_array[i]);
 
-        let supportedOs = ["android"];
+        let supportedOs = ["android", "ios"];
         if (!supportedOs.includes(spec_array[i].split(" => ")[0])) {
             console.log("\nPlease select serial runs supported platform : " + supportedOs.toString());
             fs.writeFileSync(path.resolve(__dirname, String("./run.txt")), "");
@@ -53,7 +53,7 @@ function run_spec() {
             let baseCommand = "npx mocha --require 'ts-node/register' --platform android --device emulator-5554 --diff true --full-trace true --no-timeouts --reporter mochawesome --reporter-options 'reportDir=results/_serial/TEMP_RESULT_FOLDER_TEMP,reportFilename='appium-report',reportPageTitle='" + spec_array_with_result_folder[i].split(" => ")[4] + "',embeddedScreenshots=true,charts=true,html=true,json=false,overwrite=true,inlineAssets=true,saveAllAttempts=false,code=false,quiet=false,ignoreVideos=true,showPending=true,autoOpen=false' --spec ";
 
             baseCommand = baseCommand.replace("--platform android", "--platform " + spec_array_with_result_folder[i].split(" => ")[0]);
-            baseCommand = baseCommand.replace("--device emulator-5554", "--device " + spec_array_with_result_folder[i].split(" => ")[1]);
+            baseCommand = baseCommand.replace("--device emulator-5554", "--device '" + spec_array_with_result_folder[i].split(" => ")[1] + "'");
             baseCommand = baseCommand + spec_array_with_result_folder[i].split(" => ")[2].replaceAll("\\\\", "/");
             baseCommand = baseCommand.replace("TEMP_RESULT_FOLDER_TEMP", spec_array_with_result_folder[i].split(" => ")[4] + "/" + spec_array_with_result_folder[i].split(" => ")[3]);
 
@@ -62,7 +62,13 @@ function run_spec() {
                 fs.mkdirSync(final_result_folder, { recursive: true });
             }
 
-            let final_command_push = String(baseCommand + " > '" + final_result_folder + "/appium-log.txt'").replaceAll("\r", "");
+            let recording_folder = final_result_folder + "/recordings";
+            if (!fs.existsSync(recording_folder)) {
+                fs.mkdirSync(recording_folder, { recursive: true });
+            }
+
+            // let final_command_push = String(baseCommand + " > '" + final_result_folder + "/appium-log.txt'").replaceAll("\r", "");
+            let final_command_push = String(baseCommand).replaceAll("\r", "");
 
             spec_array_with_final_cmd.push(final_command_push);
         } else {
@@ -85,17 +91,17 @@ function run_spec() {
 
     fs.writeFileSync(path.resolve(__dirname, String("./run.txt")), spec_array_with_final_cmd.toString().replaceAll("\n,", "\n"));
 
-    console.log("\n==================== Appium Report Files ====================\n");
+    // console.log("\n==================== Appium Report Files ====================\n");
 
-    for (let i = 0; i < spec_array_with_result_folder.length; i++) {
-        let report_folder_path = "../../results/_serial/" + spec_array_with_result_folder[i].split(" => ")[4] + "/" + spec_array_with_result_folder[i].split(" => ")[3];
-        let log = path.resolve(__dirname, String(report_folder_path + "/appium-log.txt"));
-        let report = path.resolve(__dirname, String(report_folder_path + "/appium-report.html"));
-        console.log(log);
-        console.log(report + "\n");
-    }
+    // for (let i = 0; i < spec_array_with_result_folder.length; i++) {
+    //     let report_folder_path = "../../results/_serial/" + spec_array_with_result_folder[i].split(" => ")[4] + "/" + spec_array_with_result_folder[i].split(" => ")[3];
+    //     let log = path.resolve(__dirname, String(report_folder_path + "/appium-log.txt"));
+    //     let report = path.resolve(__dirname, String(report_folder_path + "/appium-report.html"));
+    //     console.log(log);
+    //     console.log(report + "\n");
+    // }
 
-    console.log("Running specs...");
+    // console.log("Running specs...");
 
     return;
 }

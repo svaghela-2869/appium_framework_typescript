@@ -1,5 +1,6 @@
 import * as reporter from "./reporter";
 import * as utils_common from "./utils_common";
+import * as fs from "fs";
 
 import { remote } from "webdriverio";
 import { main as main_appium_server } from "appium";
@@ -48,8 +49,7 @@ export async function launch(app: string, launch_activity: string) {
         };
         await reporter.info("Launching app on android...");
         driver = await remote(driver_options);
-        await utils_common.sleep(3);
-        await reporter.pass("App [ " + app + " ] launched.", true);
+        await driver.startRecordingScreen();
     } else if (String(device.platform).toLowerCase() == "ios") {
         const ios_capabilities: any = {
             platformName: "iOS",
@@ -64,29 +64,52 @@ export async function launch(app: string, launch_activity: string) {
         };
         await reporter.info("Launching app on ios...");
         driver = await remote(driver_options);
-        await utils_common.sleep(3);
-        await reporter.pass("App [ " + app + " ] launched.", true);
     } else {
         await reporter.fail("Please select valid platform in appium-runner.txt !!!");
         return;
     }
+
+    await utils_common.sleep(3);
+    await reporter.pass("App [ " + app + " ] launched.", true);
+
     await reporter.exit_log("launch");
 }
 
-export async function quit_driver_and_server() {
+export async function quit_driver() {
     await reporter.exit_log("quit_driver");
 
-    const waitTill = new Date(new Date().getTime() + 5000);
-    while (waitTill > new Date()) {}
+    await utils_common.sleep(3);
     try {
+        await driver.closeApp();
+        await reporter.debug("App closed.");
+        await utils_common.sleep(3);
+
+        if (String(device.platform).toLowerCase() != "ios") {
+            await save_recording();
+        }
+
         await driver.deleteSession();
-        await reporter.info("session deleted.");
-        // await driver.end();
+        await reporter.debug("Session deleted.");
+
         await server.close();
-        await reporter.info("server closed.");
+        await reporter.debug("Server closed.");
     } catch (error) {
         await reporter.fail("something went wrong while closing connection !!!");
     }
 
     await reporter.exit_log("quit_driver");
+}
+
+async function save_recording() {
+    await reporter.exit_log("save_recording");
+
+    try {
+        const video_record_data = await driver.stopRecordingScreen();
+        const file_path = spec.resultFolder + "/recordings/" + spec.name + ".mp4";
+        fs.writeFileSync(file_path, video_record_data, { encoding: "base64" });
+    } catch (error) {
+        await reporter.fail("something went wrong while saving recording !!!");
+    }
+
+    await reporter.exit_log("save_recording");
 }

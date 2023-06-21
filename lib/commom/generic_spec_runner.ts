@@ -43,6 +43,6 @@ export function spec_runner(argv: any, dirname: string, filename: string) {
     });
 
     after(async function () {
-        await globalConfig.quit_driver_and_server();
+        await globalConfig.quit_driver();
     });
 }

@@ -50,6 +50,12 @@ export async function init(arg: any, dirPath: string, filePath: string) {
         });
     }
 
+    if (!fs.existsSync(globalConfig.spec.resultFolder + "/recordings")) {
+        fs.mkdirSync(globalConfig.spec.resultFolder + "/recordings", {
+            recursive: true,
+        });
+    }
+
     console.log(JSON.stringify(globalConfig.spec) + "\n");
 
     reporter.set_logger();
