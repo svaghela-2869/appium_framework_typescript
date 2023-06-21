@@ -49,7 +49,6 @@ export async function launch(app: string, launch_activity: string) {
         };
         await reporter.info("Launching app on android...");
         driver = await remote(driver_options);
-        await driver.startRecordingScreen();
     } else if (String(device.platform).toLowerCase() == "ios") {
         const ios_capabilities: any = {
             platformName: "iOS",
@@ -69,6 +68,7 @@ export async function launch(app: string, launch_activity: string) {
         return;
     }
 
+    await driver.startRecordingScreen({ videoType: "h264", videoQuality: "high", timeLimit: 900 });
     await utils_common.sleep(3);
     await reporter.pass("App [ " + app + " ] launched.", true);
 
@@ -81,18 +81,13 @@ export async function quit_driver() {
     await utils_common.sleep(3);
     try {
         await driver.closeApp();
-        await reporter.debug("App closed.");
-        await utils_common.sleep(3);
 
-        if (String(device.platform).toLowerCase() != "ios") {
-            await save_recording();
-        }
+        await utils_common.sleep(3);
+        await save_recording();
 
         await driver.deleteSession();
-        await reporter.debug("Session deleted.");
 
         await server.close();
-        await reporter.debug("Server closed.");
     } catch (error) {
         await reporter.fail("something went wrong while closing connection !!!");
     }
@@ -104,11 +99,11 @@ async function save_recording() {
     await reporter.exit_log("save_recording");
 
     try {
-        const video_record_data = await driver.stopRecordingScreen();
         const file_path = spec.resultFolder + "/recordings/" + spec.name + ".mp4";
+        const video_record_data = await driver.stopRecordingScreen();
         fs.writeFileSync(file_path, video_record_data, { encoding: "base64" });
     } catch (error) {
-        await reporter.fail("something went wrong while saving recording !!!");
+        await reporter.fail("something went wrong while saving video recording !!!");
     }
 
     await reporter.exit_log("save_recording");
