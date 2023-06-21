@@ -1,11 +1,11 @@
 import * as globalConfig from "./config";
 import * as reporter from "./reporter";
 
-let driver: any;
+let driver: WebdriverIO.Browser;
 
-export async function launch_app(app: string, launch_activity: string) {
+export async function launch_app(app_package_or_bundle_id: string, android_launch_activity: string) {
     await reporter.entry_log("launch_app");
-    await globalConfig.launch(app, launch_activity);
+    await globalConfig.launch(app_package_or_bundle_id, android_launch_activity || "ios");
     driver = globalConfig.driver;
     await reporter.exit_log("launch_app");
 }

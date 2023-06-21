@@ -1,6 +1,6 @@
-import * as reporter from "../../lib/commom/reporter";
-import * as utils_common from "../../lib/commom/utils_common";
-import * as globalConfig from "../../lib/commom/config";
+import * as reporter from "./reporter";
+import * as utils_common from "./utils_common";
+import * as globalConfig from "./config";
 import { assert } from "chai";
 
 export function spec_runner(argv: any, dirname: string, filename: string) {
@@ -43,6 +43,6 @@ export function spec_runner(argv: any, dirname: string, filename: string) {
     });
 
     after(async function () {
-        await globalConfig.quit_driver();
+        await globalConfig.quit_driver_and_server();
     });
 }

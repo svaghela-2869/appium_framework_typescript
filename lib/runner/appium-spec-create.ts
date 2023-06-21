@@ -19,6 +19,9 @@ function run_spec_create() {
         }
 
         let dynamic_import_count = spec_array[i].split(" => ")[0].split(split).length;
+        if (spec_array[i].split(" => ")[0].endsWith(split)) {
+            dynamic_import_count = dynamic_import_count - 1;
+        }
 
         console.log("\nGenerating Files For Spec : " + spec_array[i] + "\n");
 
