@@ -1,5 +1,5 @@
 ## before => platform name ( android or ios )
-## between => => device name ( get from "adb devices" )
+## between => => device name ( get from "adb devices" or "xcrun simctl list devices booted" )
 ## after => spec runner path "relative path from project folder"
 ## 
 ## example mac : android => emulator-5554 => specs/_demo/android_setting_app.spec.ts
