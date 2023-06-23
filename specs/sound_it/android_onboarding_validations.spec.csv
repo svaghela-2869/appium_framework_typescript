@@ -1,2 +1,16 @@
-launch_app,com.sound.it,src/sound_it/apps/sound-it-debug-20-6-23.apk
-click_with_id,SIGN UP,{{XS}}
+##,Launching App.,
+launch_app,com.sound.it,src/sound_it/apps/sound-it-debug-20-6-23.apk,
+##,Clicking on Sign Up.,
+wait_for_element_to_be_present_on_ui,//android.widget.ImageView[@content-desc="SGN UP"],10,,
+click_with_xpath,//android.widget.ImageView[@content-desc="SIGN UP"],
+##,Interests selection.,
+wait_for_element_to_be_present_on_ui,//android.view.View[@content-desc="Comedy"],5,
+click_with_xpath,//android.view.View[@content-desc="Comedy"],
+click_with_xpath,//android.view.View[@content-desc="IT firm"],
+click_with_xpath,//android.view.View[@content-desc="Modeling"],
+click_with_xpath,//android.view.View[@content-desc="Tech"],
+click_with_xpath,//android.view.View[@content-desc="Business"],
+click_with_xpath,//android.widget.Button[@content-desc="CONTINUE"],
+##,
+skip,click_with_xpath,{{XS}},
+click_with_xpath,{{XS}},

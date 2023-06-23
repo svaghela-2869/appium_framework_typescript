@@ -106,8 +106,7 @@ export async function get_all_api_calls(data_file: string) {
                 let firstColumn = _.first(step);
 
                 if (firstColumn.startsWith("##")) {
-                    step = _.drop(step);
-                    firstColumn = _.last(step).trim();
+                    continue;
                 } else if (firstColumn.toString().equalsIgnoreCase("skip")) {
                     newStep["zeroColumn"] = firstColumn;
                     step = _.drop(step);
@@ -170,7 +169,7 @@ export async function execute_step(step: any) {
             await apis[api_to_call].call(apis, dataMap);
         }
     } else {
-        await reporter.fail_and_continue("Method '" + step.name + "' does not exists, please check and update csv !!!");
+        await reporter.fail_and_continue("method '" + step.name + "' does not exists, please check and update csv !!!");
     }
 }
 

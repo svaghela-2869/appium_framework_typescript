@@ -16,8 +16,8 @@
             "path": "lib/commom/uihelper"
         },
         {
-            "description": "Click with ID.",
-            "name": "click_with_id",
+            "description": "Waiting for element to be present on page.",
+            "name": "wait_for_element_to_be_present_on_ui",
             "path": "lib/commom/uihelper"
         }
     ]
