@@ -8,9 +8,11 @@ import "./extentions";
 const dateFormat = require("dateformat");
 const papa = require("papaparse");
 const _ = require("lodash");
+const parse_xml_to_string = require("xml2js").parseString;
+const ignore_case = require("ignore-case");
 
 export function get_time_stamp(format: string = "yyyymmddHHMMss") {
-    return dateFormat(format);
+    return dateFormat(format).toString();
 }
 
 export function get_random_number(minimumNumber: number, maximumNumber: number): number {
@@ -19,6 +21,14 @@ export function get_random_number(minimumNumber: number, maximumNumber: number):
 
 export async function init(arg: any, dirPath: string, filePath: string) {
     console.log("\n" + JSON.stringify(arg) + "\n");
+
+    const env_xml = path.resolve(__dirname, "../../env_vars.xml");
+    if (fs.existsSync(env_xml)) {
+        console.log("loading env_vars from xml...\n");
+        load_env_xml(env_xml);
+    } else {
+        await reporter.warn("Not able find env xml [ " + path.resolve(__dirname, env_xml) + " ]");
+    }
 
     globalConfig.spec["name"] = filePath.replace(dirPath + "/", "").replace(".spec.ts", "");
     if (os.type().toLocaleLowerCase().startsWith("win")) {
@@ -62,7 +72,9 @@ export async function init(arg: any, dirPath: string, filePath: string) {
 
     await reporter.info("Spec [ " + globalConfig.spec.ts + " ]");
     await reporter.info("Data [ " + globalConfig.spec.csv + " ]");
-    await reporter.info("Platform [ " + globalConfig.device.platform + " ]" + " Device [ " + globalConfig.device.name + " ]");
+    await reporter.info("XS [ " + globalConfig.env_vars.XS + " ]");
+    await reporter.info("Platform [ " + globalConfig.device.platform + " ]");
+    await reporter.info("Device [ " + globalConfig.device.name + " ]");
 
     await globalConfig.launch_server();
 }
@@ -81,7 +93,10 @@ export async function get_all_api_calls(data_file: string) {
 
         let csv_string = fs.readFileSync(data_file).toString();
         let csv_apis_data = papa.parse(csv_string, { delimiter: "," });
-        let csv_apis = csv_apis_data.data;
+        let csv_apis_data_formatted = format_csv_data(csv_apis_data.data);
+        let csv_apis = csv_apis_data_formatted;
+
+        // console.log(JSON.stringify(csv_apis, null, 4));
 
         for (let i = 0; i < csv_apis.length; i++) {
             let step = csv_apis[i];
@@ -89,7 +104,11 @@ export async function get_all_api_calls(data_file: string) {
 
             if (step && step.length > 0) {
                 let firstColumn = _.first(step);
-                if (firstColumn.toString().equalsIgnoreCase("skip")) {
+
+                if (firstColumn.startsWith("##")) {
+                    step = _.drop(step);
+                    firstColumn = _.last(step).trim();
+                } else if (firstColumn.toString().equalsIgnoreCase("skip")) {
                     newStep["zeroColumn"] = firstColumn;
                     step = _.drop(step);
                     firstColumn = _.first(step).trim();
@@ -128,11 +147,11 @@ async function get_api_list() {
     return apis;
 }
 
-export async function executeStep(step: any) {
+export async function execute_step(step: any) {
     await reporter.info("Step [ " + step.name + " ]", false);
     await reporter.info("Data [ " + step.data + " ]", false);
 
-    let dataMap = await convert_step_array_to_map(step.data);
+    let dataMap = convert_step_array_to_map(step.data);
 
     // console.log(dataMap);
 
@@ -155,7 +174,7 @@ export async function executeStep(step: any) {
     }
 }
 
-async function convert_step_array_to_map(data: string[]) {
+function convert_step_array_to_map(data: string[]) {
     let map = new Map();
 
     // console.log(data);
@@ -174,4 +193,47 @@ async function convert_step_array_to_map(data: string[]) {
     }
 
     return map;
+}
+
+function format_csv_data(csv_apis_data: any) {
+    let csv_apis_data_formatted: any = [];
+    let map = new Map();
+    map.set("xs", globalConfig.env_vars.XS);
+
+    for (let i = 0; i < csv_apis_data.length; i++) {
+        let new_row: string[] = [];
+        let csv_row = csv_apis_data[i];
+        for (let j = 0; j < csv_row.length; j++) {
+            let cell = csv_row[j];
+            if (cell && cell.trim() !== "") {
+                map.forEach((value, key) => {
+                    if (ignore_case.includes(cell, "{{" + key + "}}")) {
+                        let replace_value = new RegExp("\\{\\{" + key + "\\}\\}", "gi");
+                        cell = cell.replace(replace_value, value);
+                    }
+                });
+                new_row.push(cell);
+            }
+        }
+        csv_apis_data_formatted.push(new_row);
+    }
+    return csv_apis_data_formatted;
+}
+
+function load_env_xml(env_file: string) {
+    let env_file_string = fs.readFileSync(env_file).toString();
+
+    // console.log(env_file_string);
+
+    parse_xml_to_string(env_file_string, function (err: any, result: any) {
+        let env_vars_from_xml = result["Environment"]["Variable"];
+        env_vars_from_xml.forEach(async function (evar: any) {
+            let name = evar.Name;
+            let value = evar.Value;
+            if (!globalConfig.env_vars[name]) {
+                await reporter.debug(name + "==" + value);
+                globalConfig.env_vars[name] = value[0];
+            }
+        });
+    });
 }

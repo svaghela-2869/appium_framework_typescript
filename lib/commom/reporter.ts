@@ -34,6 +34,8 @@ export async function debug(value: string) {
 }
 
 export async function info(msg: string, screenShot?: boolean) {
+    screenShot = false;
+
     logger.info(msg);
     let contMsg: any = {};
 
@@ -50,6 +52,8 @@ export async function info(msg: string, screenShot?: boolean) {
 }
 
 export async function pass(msg: string, screenShot?: boolean) {
+    screenShot = false;
+
     logger.info(msg);
     let contMsg: any = {};
 
@@ -67,6 +71,8 @@ export async function pass(msg: string, screenShot?: boolean) {
 }
 
 export async function warn(msg: string, screenShot?: boolean) {
+    screenShot = false;
+
     logger.warn(msg);
     let contMsg: any = {};
 

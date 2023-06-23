@@ -6,13 +6,18 @@
             "path": "lib/commom/uihelper"
         },
         {
-            "description": "Click on XPath.",
+            "description": "Click with XPath.",
             "name": "click_with_xpath",
             "path": "lib/commom/uihelper"
         },
         {
             "description": "Sleep.",
             "name": "sleep",
+            "path": "lib/commom/uihelper"
+        },
+        {
+            "description": "Click with ID.",
+            "name": "click_with_id",
             "path": "lib/commom/uihelper"
         }
     ]

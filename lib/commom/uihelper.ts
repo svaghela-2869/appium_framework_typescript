@@ -22,7 +22,7 @@ export async function click_with_xpath(xpath: string) {
     await reporter.entry_log("click_with_xpath");
 
     await reporter.debug(xpath);
-    let ele = await driver.$(xpath);
+    let ele = await driver.$("xpath=" + xpath);
     try {
         await ele.click();
         await utils_common.sleep(1);
@@ -32,4 +32,20 @@ export async function click_with_xpath(xpath: string) {
     }
 
     await reporter.exit_log("click_with_xpath");
+}
+
+export async function click_with_id(accessibility_id: string) {
+    await reporter.entry_log("click_with_id");
+
+    await reporter.debug(accessibility_id);
+    let ele = await driver.$("id=" + accessibility_id);
+    try {
+        await ele.click();
+        await utils_common.sleep(1);
+        await reporter.pass("Clicked on element [ " + accessibility_id + " ]", true);
+    } catch (error) {
+        await reporter.fail_and_continue("Element not found with id, [ " + accessibility_id + " ]", true);
+    }
+
+    await reporter.exit_log("click_with_id");
 }

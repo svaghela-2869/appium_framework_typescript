@@ -24,7 +24,7 @@ export function spec_runner(argv: any, dirname: string, filename: string) {
                 for (let i = 0; i < api_calls_to_make.length; i++) {
                     const step = api_calls_to_make[i];
                     (step.zeroColumn == "skip" ? xit : it)(step.description, async function () {
-                        await utils_common.executeStep(step);
+                        await utils_common.execute_step(step);
                         if (reporter.step_status.fail) {
                             assert.fail(reporter.step_status.msg);
                         }

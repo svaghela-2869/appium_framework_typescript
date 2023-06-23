@@ -9,6 +9,7 @@ import { AppiumServer } from "@appium/types";
 export let driver: WebdriverIO.Browser;
 export let spec: any = {};
 export let device: any = {};
+export let env_vars: any = {};
 
 let server: AppiumServer;
 
@@ -21,7 +22,7 @@ export async function launch_server() {
     };
     try {
         server = await main_appium_server(args);
-        await reporter.info("Appium server is up.");
+        await reporter.pass("Appium server is up.");
     } catch (error) {
         await reporter.fail("Failed to launch appium server.");
     }
@@ -48,7 +49,6 @@ export async function install_app(app_package_id_or_bundle_id: string, app_file_
             port: 2869,
             capabilities: android_capabilities,
         };
-        driver = await remote(driver_options);
     } else if (String(device.platform).toLowerCase() == "ios") {
         const ios_capabilities: any = {
             platformName: "iOS",
@@ -62,11 +62,15 @@ export async function install_app(app_package_id_or_bundle_id: string, app_file_
             port: 2869,
             capabilities: ios_capabilities,
         };
-        driver = await remote(driver_options);
     } else {
         await reporter.fail("Please select valid platform in appium-runner.txt !!!");
         return;
     }
+
+    await reporter.info("Appium Server trying to connect with the device...");
+    driver = await remote(driver_options);
+
+    await driver.startRecordingScreen({ videoType: "h264", videoQuality: "high", videoFps: 60, timeLimit: 1800 });
 
     if (await driver.isLocked()) {
         await reporter.fail("device locked !!!", true);
@@ -82,13 +86,10 @@ export async function install_app(app_package_id_or_bundle_id: string, app_file_
                 return;
             } else {
                 await driver.installApp(app_file_path);
-                await reporter.info("App installation complete.");
+                await reporter.pass("App installation complete.");
             }
         }
     }
-
-    await utils_common.sleep(5);
-    await driver.startRecordingScreen({ videoType: "h264", videoQuality: "high", videoFps: 60, timeLimit: 1800 });
 
     await reporter.exit_log("install_app");
 }
