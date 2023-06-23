@@ -73,8 +73,7 @@ export async function init(arg: any, dirPath: string, filePath: string) {
     await reporter.info("Spec [ " + globalConfig.spec.ts + " ]");
     await reporter.info("Data [ " + globalConfig.spec.csv + " ]");
     await reporter.info("XS [ " + globalConfig.env_vars.XS + " ]");
-    await reporter.info("Platform [ " + globalConfig.device.platform + " ]");
-    await reporter.info("Device [ " + globalConfig.device.name + " ]");
+    await reporter.info("Platform [ " + globalConfig.device.platform + " ]" + " Device [ " + globalConfig.device.name + " ]");
 
     await globalConfig.launch_server();
 }

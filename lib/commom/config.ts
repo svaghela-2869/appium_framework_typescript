@@ -106,7 +106,14 @@ export async function quit_driver() {
 
         await driver.deleteSession();
 
+        server.closeAllConnections();
         await server.close();
+
+        // temporary hard quit appium ( not recommended )
+        if (String(device.platform).toLowerCase() == "ios") {
+            var cmd = require("node-cmd");
+            cmd.runSync("pkill -9 -f appium");
+        }
     } catch (error) {
         await reporter.fail("something went wrong while closing connection !!!");
     }
