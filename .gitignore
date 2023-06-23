@@ -3,4 +3,7 @@ node_modules
 results
 run.txt
 
+**/apps/*.apk
+**/apps/*.ipa
+
 .DS_Store

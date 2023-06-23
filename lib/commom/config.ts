@@ -21,7 +21,6 @@ export async function launch_server() {
     };
     try {
         server = await main_appium_server(args);
-        await reporter.info("Server.address : " + JSON.stringify(server.address));
         await reporter.info("Appium server is up.");
     } catch (error) {
         await reporter.fail("Failed to launch appium server.");
@@ -30,49 +29,68 @@ export async function launch_server() {
     await reporter.exit_log("launch_server");
 }
 
-export async function launch(app: string, launch_activity: string) {
-    await reporter.exit_log("launch");
+export async function install_app(app_package_id_or_bundle_id: string, app_file_path: string) {
+    await reporter.exit_log("install_app");
+
+    spec.app = app_package_id_or_bundle_id;
 
     let driver_options: any;
     if (String(device.platform).toLowerCase() == "android") {
         const android_capabilities: any = {
             platformName: "Android",
             "appium:automationName": "UiAutomator2",
+            "appium:fullReset": false,
+            "appium:noReset": true,
             "appium:deviceName": device.name,
-            "appium:appPackage": app,
-            "appium:appActivity": launch_activity,
         };
         driver_options = {
             address: "0.0.0.0",
             port: 2869,
             capabilities: android_capabilities,
         };
-        await reporter.info("Launching app on android...");
         driver = await remote(driver_options);
     } else if (String(device.platform).toLowerCase() == "ios") {
         const ios_capabilities: any = {
             platformName: "iOS",
             "appium:automationName": "XCUITest",
+            "appium:fullReset": false,
+            "appium:noReset": true,
             "appium:deviceName": device.name,
-            "appium:bundleId": app,
         };
         driver_options = {
             address: "0.0.0.0",
             port: 2869,
             capabilities: ios_capabilities,
         };
-        await reporter.info("Launching app on ios...");
         driver = await remote(driver_options);
     } else {
         await reporter.fail("Please select valid platform in appium-runner.txt !!!");
         return;
     }
 
-    await driver.startRecordingScreen({ videoType: "h264", videoQuality: "high", timeLimit: 900 });
-    await utils_common.sleep(3);
-    await reporter.pass("App [ " + app + " ] launched.", true);
+    if (await driver.isLocked()) {
+        await reporter.fail("device locked !!!", true);
+        return;
+    } else {
+        await driver.terminateApp(app_package_id_or_bundle_id);
+        await reporter.info("Installing app, if not installed...");
+        if (await driver.isAppInstalled(app_package_id_or_bundle_id)) {
+            await reporter.info("App is already installed.");
+        } else {
+            if (app_file_path == "app_launch_without_file") {
+                await reporter.fail("App is not installed, please give app file path in csv !!!");
+                return;
+            } else {
+                await driver.installApp(app_file_path);
+                await reporter.info("App installation complete.");
+            }
+        }
+    }
 
-    await reporter.exit_log("launch");
+    await utils_common.sleep(5);
+    await driver.startRecordingScreen({ videoType: "h264", videoQuality: "high", videoFps: 60, timeLimit: 1800 });
+
+    await reporter.exit_log("install_app");
 }
 
 export async function quit_driver() {
@@ -80,7 +98,7 @@ export async function quit_driver() {
 
     await utils_common.sleep(3);
     try {
-        await driver.closeApp();
+        await driver.terminateApp(spec.app);
 
         await utils_common.sleep(3);
         await save_recording();

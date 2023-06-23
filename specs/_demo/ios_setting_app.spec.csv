@@ -1,1 +1,3 @@
 launch_app,com.apple.Preferences
+click_with_xpath,(//*[@name="General"])[1]
+click_with_xpath,(//*[@name="About"])[1]
