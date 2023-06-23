@@ -1,7 +1,7 @@
 ##,Launching App.,
 launch_app,com.sound.it,src/sound_it/apps/sound-it-debug-20-6-23.apk,
 ##,Clicking on Sign Up.,
-wait_for_element_to_be_present_on_ui,//android.widget.ImageView[@content-desc="SGN UP"],10,,
+wait_for_element_to_be_present_on_ui,//android.widget.ImageView[@content-desc="SGN UP"],10,
 click_with_xpath,//android.widget.ImageView[@content-desc="SIGN UP"],
 ##,Interests selection.,
 wait_for_element_to_be_present_on_ui,//android.view.View[@content-desc="Comedy"],5,
