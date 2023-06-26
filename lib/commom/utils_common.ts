@@ -70,8 +70,8 @@ export async function init(arg: any, dirPath: string, filePath: string) {
 
     reporter.set_logger();
 
-    await reporter.info("Spec [ " + globalConfig.spec.ts + " ]");
-    await reporter.info("Data [ " + globalConfig.spec.csv + " ]");
+    await reporter.info("Spec : " + globalConfig.spec.ts);
+    await reporter.info("Data : " + globalConfig.spec.csv);
     await reporter.info("XS [ " + globalConfig.env_vars.XS + " ]");
     await reporter.info("Platform [ " + globalConfig.device.platform + " ]" + " Device [ " + globalConfig.device.name + " ]");
 

@@ -19,6 +19,16 @@
             "description": "Waiting for element to be present on page.",
             "name": "wait_for_element_to_be_present_on_ui",
             "path": "lib/commom/uihelper"
+        },
+        {
+            "description": "Sound it - New Onboarding V1",
+            "name": "sound_it_onboarding",
+            "path": "lib/_projects/sound_it"
+        },
+        {
+            "description": "Click with Accessibility ID.",
+            "name": "click_with_id",
+            "path": "lib/commom/uihelper"
         }
     ]
 }

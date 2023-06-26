@@ -85,8 +85,12 @@ export async function install_app(app_package_id_or_bundle_id: string, app_file_
                 await reporter.fail("App is not installed, please give app file path in csv !!!");
                 return;
             } else {
-                await driver.installApp(app_file_path);
-                await reporter.pass("App installation complete.");
+                if (fs.existsSync(app_file_path)) {
+                    await driver.installApp(app_file_path);
+                    await reporter.pass("App installation complete.");
+                } else {
+                    await reporter.fail("App file not found on given path : " + app_file_path);
+                }
             }
         }
     }
