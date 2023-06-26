@@ -1,0 +1,14 @@
+"launch_app","com.sound.it","src/_projects/sound_it/apps/sound-it-debug-20-6-23.apk"
+"wait_for_element_to_be_present_on_ui","~SIGN UP","10"
+"verify_element_on_ui_with_id","I already have an account",
+"verify_element_on_ui_with_id","SIGN UP",
+"click_with_id","I already have an account",
+"sleep","3",
+"verify_element_on_ui_with_id","Don’t you have an account?",
+"click_with_xpath","(//android.widget.ImageView)[1]",
+"sleep","3",
+"click_with_id","SIGN UP",
+"sleep","3",
+"verify_element_on_ui_with_id","PICK YOUR INTERESTS
+Choose 5+ interests to personalize your Feed!",
+"click_with_xpath","(//android.widget.ImageView)[1]",

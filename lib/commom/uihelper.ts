@@ -24,27 +24,31 @@ export async function click_with_xpath(xpath: string) {
     await reporter.debug(xpath);
     let ele = await driver.$(xpath);
     try {
-        await ele.click();
-        await utils_common.sleep(1);
-        await reporter.pass("Clicked on element with xpath : " + xpath, true);
+        if (ele && (await ele.isDisplayed())) {
+            await ele.click();
+            await utils_common.sleep(1);
+            await reporter.pass("Clicked on element with xpath : " + xpath, true);
+        } else {
+            await reporter.fail_and_continue("Element not found with xpath : " + xpath, true);
+        }
     } catch (error) {
-        await reporter.fail_and_continue("Element not found with xpath : " + xpath, true);
+        await reporter.fail("Got error while click : " + error);
     }
 
     await reporter.exit_log("click_with_xpath");
 }
 
-export async function wait_for_element_to_be_present_on_ui(xpath: string, wait_time_in_seconds: number, fail?: boolean) {
+export async function wait_for_element_to_be_present_on_ui(xpath_or_id: string, wait_time_in_seconds: number, fail?: boolean) {
     await reporter.entry_log("wait_for_element_to_be_present_on_ui");
 
-    await reporter.debug(xpath);
+    await reporter.debug(xpath_or_id);
     await driver.setTimeouts(0);
     for (let i = 0; i < wait_time_in_seconds; i++) {
         await sleep(1);
+        let ele = await driver.$(xpath_or_id);
         try {
-            let ele = await driver.$(xpath);
-            if (await ele.isDisplayed()) {
-                await reporter.pass("Element with xpath : " + xpath + " found in " + i + " seconds");
+            if (ele && (await ele.isDisplayed())) {
+                await reporter.pass("Element : " + xpath_or_id + " found in " + i + " seconds");
                 return true;
             }
         } catch (error) {
@@ -53,9 +57,9 @@ export async function wait_for_element_to_be_present_on_ui(xpath: string, wait_t
     }
 
     if (fail) {
-        await reporter.fail_and_continue("Element with xpath : " + xpath + " not found in " + wait_time_in_seconds + " seconds", true);
+        await reporter.fail_and_continue("Element : " + xpath_or_id + " not found in " + wait_time_in_seconds + " seconds", true);
     } else {
-        await reporter.warn("Element with xpath : " + xpath + " not found in " + wait_time_in_seconds + " seconds", true);
+        await reporter.warn("Element : " + xpath_or_id + " not found in " + wait_time_in_seconds + " seconds", true);
     }
 
     await reporter.exit_log("wait_for_element_to_be_present_on_ui");
@@ -81,12 +85,52 @@ export async function click_with_id(id: string) {
     await reporter.debug(id);
     let ele = await driver.$("~" + id);
     try {
-        await ele.click();
-        await utils_common.sleep(1);
-        await reporter.pass("Clicked on element using id : " + id, true);
+        if (ele && (await ele.isDisplayed())) {
+            await ele.click();
+            await utils_common.sleep(1);
+            await reporter.pass("Clicked on element using id : " + id, true);
+        } else {
+            await reporter.fail_and_continue("Element not found with id : " + id, true);
+        }
     } catch (error) {
-        await reporter.fail_and_continue("Element not found with id : " + id, true);
+        await reporter.fail("Got error while click : " + error);
     }
 
     await reporter.exit_log("click_with_id");
+}
+
+export async function verify_element_on_ui_with_xpath(xpath: string) {
+    await reporter.entry_log("verify_element_on_ui_with_xpath");
+
+    await reporter.debug(xpath);
+    let ele = await driver.$(xpath);
+    try {
+        if (ele && (await ele.isDisplayed())) {
+            await reporter.pass("Element found using xpath : " + xpath, true);
+        } else {
+            await reporter.fail_and_continue("Element not found with xpath : " + xpath, true);
+        }
+    } catch (error) {
+        await reporter.fail("Got error while verify element : " + error);
+    }
+
+    await reporter.exit_log("verify_element_on_ui_with_xpath");
+}
+
+export async function verify_element_on_ui_with_id(id: string) {
+    await reporter.entry_log("verify_element_on_ui_with_id");
+
+    await reporter.debug(id);
+    let ele = await driver.$("~" + id);
+    try {
+        if (ele && (await ele.isDisplayed())) {
+            await reporter.pass("Element found using id : " + id, true);
+        } else {
+            await reporter.fail_and_continue("Element not found with id : " + id, true);
+        }
+    } catch (error) {
+        await reporter.fail("Got error while verify element : " + error);
+    }
+
+    await reporter.exit_log("verify_element_on_ui_with_id");
 }
