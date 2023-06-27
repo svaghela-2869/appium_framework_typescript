@@ -1,0 +1,46 @@
+"launch_app","com.sound.it","src/_projects/sound_it/apps/sound-it-debug-20-6-23.apk",
+"wait_for_element_to_be_present_on_ui_with_id","SIGN UP","10",true
+"click_with_id","SIGN UP",,
+## Interest Selection Page
+"wait_for_element_to_be_present_on_ui_with_id","Motivation","10",true
+"click_with_id","Art",,
+"click_with_id","IT firm",,
+"click_with_id","Tech",,
+"click_with_id","Modeling",,
+"click_with_id","Religion",,
+"click_with_id","CONTINUE",,
+## Describe Yourself Page
+"wait_for_element_to_be_present_on_ui_with_id","CREATOR","10",true
+"click_with_id","CONSUMER",,
+"set_text_with_xpath","//*[@hint='Search']","India",
+"click_with_id","India",,
+"click_with_id","CONTINUE",,
+## Name Selection Page
+"wait_for_element_to_be_present_on_ui_with_xpath","//*[@hint='Name']","10",true
+"set_text_with_xpath","//*[@hint='Name']","Azad",
+"click_with_id","CONTINUE",,
+## Birthday Selection Page
+"wait_for_element_to_be_present_on_ui_with_id","WHEN IT’S YOUR BIRTHDAY?","10",true
+"set_text_with_xpath","//*[@hint='DD/MM/YYYY']","30/08/1998",
+"click_with_id","CONTINUE",,
+## Username Selection Page
+"wait_for_element_to_be_present_on_ui_with_xpath","//*[@hint='Username']","10",true
+"set_text_with_xpath","//*[@hint='Username']","soundit",
+"verify_element_on_ui_with_id","PICK A USERNAME
+How do you want to be heard?
+It’s already taken",,
+"verify_element_on_ui_with_id","SUGGESTED USERNAMES",,
+"verify_element_enabled_with_id","CONTINUE","false",
+"clear_text_with_xpath","//*[@hint='Username']",,
+"verify_element_on_ui_with_id","Please enter username",,
+"verify_element_enabled_with_id","CONTINUE","false",
+"set_text_with_xpath","//*[@hint='Username']","azad_{{XS}}",
+"wait_for_element_to_be_present_on_ui_with_id","PICK A USERNAME
+How do you want to be heard?
+Approved!","3",true
+"verify_element_enabled_with_id","CONTINUE","true",
+"click_with_id","CONTINUE",,
+## Create Account Page
+"wait_for_element_to_be_present_on_ui_with_id","CREATE AN ACCOUNT
+Enter your email or phone
+or","10",true
