@@ -175,6 +175,7 @@ export async function set_text_with_xpath(xpath: string, value: string) {
         if (ele && (await ele.isDisplayed())) {
             await ele.click();
             await utils_common.sleep(1);
+            await ele.clearValue();
             await ele.setValue(value);
             await driver.hideKeyboard();
             await reporter.pass("Value : " + value + " entered on element with xpath : " + xpath, true);
@@ -197,6 +198,7 @@ export async function set_text_with_id(id: string, value: string) {
         if (ele && (await ele.isDisplayed())) {
             await ele.click();
             await utils_common.sleep(1);
+            await ele.clearValue();
             await ele.setValue(value);
             await driver.hideKeyboard();
             await reporter.pass("Value : " + value + " entered on element with xpath : " + id, true);
@@ -208,6 +210,50 @@ export async function set_text_with_id(id: string, value: string) {
     }
 
     await reporter.exit_log("set_text_with_id");
+}
+
+export async function clear_text_with_xpath(xpath: string) {
+    await reporter.entry_log("clear_text_with_xpath");
+
+    await reporter.debug(xpath);
+    let ele = await driver.$(xpath);
+    try {
+        if (ele && (await ele.isDisplayed())) {
+            await ele.click();
+            await utils_common.sleep(1);
+            await ele.clearValue();
+            await driver.hideKeyboard();
+            await reporter.pass("Value cleared on element with xpath : " + xpath, true);
+        } else {
+            await reporter.fail_and_continue("Element not found with xpath : " + xpath, true);
+        }
+    } catch (error) {
+        await reporter.fail("Got error while click : " + error);
+    }
+
+    await reporter.exit_log("clear_text_with_xpath");
+}
+
+export async function clear_text_with_id(id: string) {
+    await reporter.entry_log("clear_text_with_id");
+
+    await reporter.debug(id);
+    let ele = await driver.$("~" + id);
+    try {
+        if (ele && (await ele.isDisplayed())) {
+            await ele.click();
+            await utils_common.sleep(1);
+            await ele.clearValue();
+            await driver.hideKeyboard();
+            await reporter.pass("Value cleared on element with id : " + id, true);
+        } else {
+            await reporter.fail_and_continue("Element not found with id : " + id, true);
+        }
+    } catch (error) {
+        await reporter.fail("Got error while click : " + error);
+    }
+
+    await reporter.exit_log("clear_text_with_id");
 }
 
 export async function sleep(seconds: number, screen_shot: boolean = false) {

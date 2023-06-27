@@ -46,6 +46,16 @@
             "path": "lib/commom/uihelper"
         },
         {
+            "description": "Clear text with XPath.",
+            "name": "clear_text_with_xpath",
+            "path": "lib/commom/uihelper"
+        },
+        {
+            "description": "Clear text with Accessibility ID.",
+            "name": "clear_text_with_id",
+            "path": "lib/commom/uihelper"
+        },
+        {
             "description": "Sleep.",
             "name": "sleep",
             "path": "lib/commom/uihelper"
