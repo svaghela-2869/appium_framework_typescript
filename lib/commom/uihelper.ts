@@ -138,17 +138,17 @@ export async function verify_element_enabled_with_id(id: string, should_be_enabl
     await reporter.exit_log("verify_element_enabled_with_id");
 }
 
-export async function wait_for_element_to_be_present_on_ui(xpath_or_id: string, wait_time_in_seconds: number, fail_test: string = "false") {
-    await reporter.entry_log("wait_for_element_to_be_present_on_ui");
+export async function wait_for_element_to_be_present_on_ui_with_xpath(xpath: string, wait_time_in_seconds: number, fail_test: string = "false") {
+    await reporter.entry_log("wait_for_element_to_be_present_on_ui_with_xpath");
 
-    await reporter.debug(xpath_or_id);
+    await reporter.debug(xpath);
     await driver.setTimeouts(0);
     for (let i = 0; i < wait_time_in_seconds; i++) {
         await sleep(1);
-        let ele = await driver.$(xpath_or_id);
+        let ele = await driver.$(xpath);
         try {
             if (ele && (await ele.isDisplayed())) {
-                await reporter.pass("Element : " + xpath_or_id + " found in " + i + " seconds");
+                await reporter.pass("Element with xpath : " + xpath + " found in " + i + " seconds");
                 return true;
             }
         } catch (error) {
@@ -157,12 +157,40 @@ export async function wait_for_element_to_be_present_on_ui(xpath_or_id: string, 
     }
 
     if (fail_test.equalsIgnoreCase("true")) {
-        await reporter.fail_and_continue("Element : " + xpath_or_id + " not found in " + wait_time_in_seconds + " seconds", true);
+        await reporter.fail_and_continue("Element with xpath : " + xpath + " not found in " + wait_time_in_seconds + " seconds", true);
     } else {
-        await reporter.warn("Element : " + xpath_or_id + " not found in " + wait_time_in_seconds + " seconds", true);
+        await reporter.warn("Element with xpath : " + xpath + " not found in " + wait_time_in_seconds + " seconds", true);
     }
 
-    await reporter.exit_log("wait_for_element_to_be_present_on_ui");
+    await reporter.exit_log("wait_for_element_to_be_present_on_ui_with_xpath");
+    return false;
+}
+
+export async function wait_for_element_to_be_present_on_ui_with_id(id: string, wait_time_in_seconds: number, fail_test: string = "false") {
+    await reporter.entry_log("wait_for_element_to_be_present_on_ui_with_id");
+
+    await reporter.debug(id);
+    await driver.setTimeouts(0);
+    for (let i = 0; i < wait_time_in_seconds; i++) {
+        await sleep(1);
+        let ele = await driver.$("~" + id);
+        try {
+            if (ele && (await ele.isDisplayed())) {
+                await reporter.pass("Element with id : " + id + " found in " + i + " seconds");
+                return true;
+            }
+        } catch (error) {
+            await reporter.debug("Got error for findElements, retrying..." + error);
+        }
+    }
+
+    if (fail_test.equalsIgnoreCase("true")) {
+        await reporter.fail_and_continue("Element with id : " + id + " not found in " + wait_time_in_seconds + " seconds", true);
+    } else {
+        await reporter.warn("Element with id : " + id + " not found in " + wait_time_in_seconds + " seconds", true);
+    }
+
+    await reporter.exit_log("wait_for_element_to_be_present_on_ui_with_id");
     return false;
 }
 
@@ -178,6 +206,7 @@ export async function set_text_with_xpath(xpath: string, value: string) {
             await ele.clearValue();
             await ele.setValue(value);
             await driver.hideKeyboard();
+            await utils_common.sleep(1);
             await reporter.pass("Value : " + value + " entered on element with xpath : " + xpath, true);
         } else {
             await reporter.fail_and_continue("Element not found with xpath : " + xpath, true);
@@ -201,6 +230,7 @@ export async function set_text_with_id(id: string, value: string) {
             await ele.clearValue();
             await ele.setValue(value);
             await driver.hideKeyboard();
+            await utils_common.sleep(1);
             await reporter.pass("Value : " + value + " entered on element with xpath : " + id, true);
         } else {
             await reporter.fail_and_continue("Element not found with xpath : " + id, true);

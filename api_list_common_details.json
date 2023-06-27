@@ -6,6 +6,16 @@
             "path": "lib/commom/uihelper"
         },
         {
+            "description": "Waiting for element to be present on ui with XPath.",
+            "name": "wait_for_element_to_be_present_on_ui_with_xpath",
+            "path": "lib/commom/uihelper"
+        },
+        {
+            "description": "Waiting for element to be present on ui with Accessibility ID.",
+            "name": "wait_for_element_to_be_present_on_ui_with_id",
+            "path": "lib/commom/uihelper"
+        },
+        {
             "description": "Click with XPath.",
             "name": "click_with_xpath",
             "path": "lib/commom/uihelper"
@@ -58,11 +68,6 @@
         {
             "description": "Sleep.",
             "name": "sleep",
-            "path": "lib/commom/uihelper"
-        },
-        {
-            "description": "Waiting for element to be present on UI.",
-            "name": "wait_for_element_to_be_present_on_ui",
             "path": "lib/commom/uihelper"
         },
         {

@@ -1,8 +1,8 @@
 "launch_app","com.sound.it","src/_projects/sound_it/apps/sound-it-debug-20-6-23.apk",
-"wait_for_element_to_be_present_on_ui","~SIGN UP","10",true
+"wait_for_element_to_be_present_on_ui_with_id","SIGN UP","10",true
 "click_with_id","SIGN UP",,
 ## Interest Selection Page
-"wait_for_element_to_be_present_on_ui","~Motivation","10",true
+"wait_for_element_to_be_present_on_ui_with_id","Motivation","10",true
 "click_with_id","Culture",,
 "click_with_id","Modeling",,
 "click_with_id","Writer",,
@@ -10,7 +10,7 @@
 "click_with_id","Comedy",,
 "click_with_id","CONTINUE",,
 ## Describe Yourself Page
-"wait_for_element_to_be_present_on_ui","~CREATOR","10",true
+"wait_for_element_to_be_present_on_ui_with_id","CREATOR","10",true
 "verify_element_on_ui_with_id","CONSUMER","true",
 "verify_element_on_ui_with_xpath","//*[@hint='Search']","true",
 "click_with_id","CREATOR",,
@@ -19,5 +19,5 @@
 "click_with_id","India",,
 "click_with_id","CONTINUE",,
 ## Name Selection Page
-"wait_for_element_to_be_present_on_ui","~WHAT SHOULD WE CALL YOU?
+"wait_for_element_to_be_present_on_ui_with_id","WHAT SHOULD WE CALL YOU?
 This is how people will recognize you","10",true

@@ -1,8 +1,8 @@
 "launch_app","com.sound.it","src/_projects/sound_it/apps/sound-it-debug-20-6-23.apk",
-"wait_for_element_to_be_present_on_ui","~SIGN UP","10",true
+"wait_for_element_to_be_present_on_ui_with_id","SIGN UP","10",true
 "click_with_id","SIGN UP",,
 ## Interest Selection Page
-"wait_for_element_to_be_present_on_ui","~Motivation","10",true
+"wait_for_element_to_be_present_on_ui_with_id","Motivation","10",true
 "click_with_id","Health",,
 "click_with_id","Singing",,
 "click_with_id","Religion",,
@@ -10,23 +10,23 @@
 "click_with_id","Motivation",,
 "click_with_id","CONTINUE",,
 ## Describe Yourself Page
-"wait_for_element_to_be_present_on_ui","~CREATOR","10",true
+"wait_for_element_to_be_present_on_ui_with_id","CREATOR","10",true
 "click_with_id","CREATOR",,
 "set_text_with_xpath","//*[@hint='Search']","India",
 "click_with_id","India",,
 "click_with_id","CONTINUE",,
 ## Name Selection Page
-"wait_for_element_to_be_present_on_ui","//*[@hint='Name']","10",true
+"wait_for_element_to_be_present_on_ui_with_xpath","//*[@hint='Name']","10",true
 "verify_element_enabled_with_id","CONTINUE","false",
 "set_text_with_xpath","//*[@hint='Name']","Azad Vaghela",
 "clear_text_with_xpath","//*[@hint='Name']",,
-"wait_for_element_to_be_present_on_ui","~Please add a name","3",true
+"wait_for_element_to_be_present_on_ui_with_id","Please add a name","3",true
 "verify_element_enabled_with_id","CONTINUE","false",
 "set_text_with_xpath","//*[@hint='Name']","Azad",
-"wait_for_element_to_be_present_on_ui","~WHAT SHOULD WE CALL YOU?
+"wait_for_element_to_be_present_on_ui_with_id","WHAT SHOULD WE CALL YOU?
 This is how people will recognize you
 Nice! That is a cool name.","3",true
 "verify_element_enabled_with_id","CONTINUE","true",
 "click_with_id","CONTINUE",,
 ## Birthday Selection Page
-"wait_for_element_to_be_present_on_ui","~WHEN IT’S YOUR BIRTHDAY?","10",true
+"wait_for_element_to_be_present_on_ui_with_id","WHEN IT’S YOUR BIRTHDAY?","10",true
