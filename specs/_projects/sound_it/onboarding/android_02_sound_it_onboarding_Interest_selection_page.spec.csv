@@ -1,0 +1,16 @@
+"launch_app","com.sound.it","src/_projects/sound_it/apps/sound-it-debug-20-6-23.apk",
+"wait_for_element_to_be_present_on_ui","~SIGN UP","10",true
+"click_with_id","SIGN UP",,
+"wait_for_element_to_be_present_on_ui","~Motivation","10",true
+"verify_element_enabled_with_id","CONTINUE","false",
+"click_with_id","🎨 Gaming",,
+"click_with_id","Business",,
+"click_with_id","Technology",,
+"click_with_id","IT firm",,
+"click_with_id","Motivation",,
+"sleep","3",,
+"verify_element_enabled_with_id","CONTINUE","true",
+"click_with_id","CONTINUE",,
+"wait_for_element_to_be_present_on_ui","~DESCRIBE YOURSELF
+How would you describe yourself?
+What is your primary location?","10",true

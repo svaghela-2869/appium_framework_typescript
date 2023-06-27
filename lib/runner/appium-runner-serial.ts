@@ -67,8 +67,8 @@ function run_spec() {
                 fs.mkdirSync(recording_folder, { recursive: true });
             }
 
-            // let final_command_push = String(baseCommand + " > '" + final_result_folder + "/appium-log.txt'").replaceAll("\r", "");
-            let final_command_push = String(baseCommand).replaceAll("\r", "");
+            let final_command_push = String(baseCommand + " > '" + final_result_folder + "/appium-log.txt'").replaceAll("\r", "");
+            // let final_command_push = String(baseCommand).replaceAll("\r", "");
 
             spec_array_with_final_cmd.push(final_command_push);
         } else {
@@ -91,17 +91,17 @@ function run_spec() {
 
     fs.writeFileSync(path.resolve(__dirname, String("./run.txt")), spec_array_with_final_cmd.toString().replaceAll("\n,", "\n"));
 
-    // console.log("\n==================== Appium Report Files ====================\n");
+    console.log("\n==================== Appium Report Files ====================\n");
 
-    // for (let i = 0; i < spec_array_with_result_folder.length; i++) {
-    //     let report_folder_path = "../../results/_serial/" + spec_array_with_result_folder[i].split(" => ")[4] + "/" + spec_array_with_result_folder[i].split(" => ")[3];
-    //     let log = path.resolve(__dirname, String(report_folder_path + "/appium-log.txt"));
-    //     let report = path.resolve(__dirname, String(report_folder_path + "/appium-report.html"));
-    //     console.log(log);
-    //     console.log(report + "\n");
-    // }
+    for (let i = 0; i < spec_array_with_result_folder.length; i++) {
+        let report_folder_path = "../../results/_serial/" + spec_array_with_result_folder[i].split(" => ")[4] + "/" + spec_array_with_result_folder[i].split(" => ")[3];
+        let log = path.resolve(__dirname, String(report_folder_path + "/appium-log.txt"));
+        let report = path.resolve(__dirname, String(report_folder_path + "/appium-report.html"));
+        console.log(log);
+        console.log(report + "\n");
+    }
 
-    // console.log("Running specs...");
+    console.log("Running specs...");
 
     return;
 }

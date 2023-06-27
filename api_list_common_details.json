@@ -26,6 +26,26 @@
             "path": "lib/commom/uihelper"
         },
         {
+            "description": "Verify element enabled with XPath.",
+            "name": "verify_element_enabled_with_xpath",
+            "path": "lib/commom/uihelper"
+        },
+        {
+            "description": "Verify element enabled with Accessibility ID.",
+            "name": "verify_element_enabled_with_id",
+            "path": "lib/commom/uihelper"
+        },
+        {
+            "description": "Set text with XPath.",
+            "name": "set_text_with_xpath",
+            "path": "lib/commom/uihelper"
+        },
+        {
+            "description": "Set text with Accessibility ID.",
+            "name": "set_text_with_id",
+            "path": "lib/commom/uihelper"
+        },
+        {
             "description": "Sleep.",
             "name": "sleep",
             "path": "lib/commom/uihelper"
