@@ -64,9 +64,9 @@ export async function verify_element_on_ui_with_xpath(xpath: string, should_exis
     await reporter.debug(xpath);
     let ele = await driver.$(xpath);
     try {
-        if (ele && (await ele.isEnabled()) && should_exists.equalsIgnoreCase("true")) {
+        if (ele && should_exists.equalsIgnoreCase("true")) {
             await reporter.pass("Element found using xpath : " + xpath, true);
-        } else if (ele && !(await ele.isEnabled()) && should_exists.equalsIgnoreCase("false")) {
+        } else if (ele && should_exists.equalsIgnoreCase("false")) {
             await reporter.pass("Element not found on ui as expected using xpath : " + xpath, true);
         } else {
             await reporter.fail_and_continue("Element not found or not verified as per requirenment, should exists : " + should_exists, true);
@@ -84,9 +84,9 @@ export async function verify_element_on_ui_with_id(id: string, should_exists: st
     await reporter.debug(id);
     let ele = await driver.$("~" + id);
     try {
-        if (ele && (await ele.isEnabled()) && should_exists.equalsIgnoreCase("true")) {
+        if (ele && should_exists.equalsIgnoreCase("true")) {
             await reporter.pass("Element found using id : " + id, true);
-        } else if (ele && !(await ele.isEnabled()) && should_exists.equalsIgnoreCase("false")) {
+        } else if (ele && should_exists.equalsIgnoreCase("false")) {
             await reporter.pass("Element not found on ui as expected using id : " + id, true);
         } else {
             await reporter.fail_and_continue("Element not found or not verified as per requirenment, should exists : " + should_exists, true);
@@ -157,7 +157,7 @@ export async function wait_for_element_to_be_present_on_ui_with_xpath(xpath: str
     }
 
     if (fail_test.equalsIgnoreCase("true")) {
-        await reporter.fail_and_continue("Element with xpath : " + xpath + " not found in " + wait_time_in_seconds + " seconds", true);
+        await reporter.fail("Element with xpath : " + xpath + " not found in " + wait_time_in_seconds + " seconds", true);
     } else {
         await reporter.warn("Element with xpath : " + xpath + " not found in " + wait_time_in_seconds + " seconds", true);
     }
@@ -185,7 +185,7 @@ export async function wait_for_element_to_be_present_on_ui_with_id(id: string, w
     }
 
     if (fail_test.equalsIgnoreCase("true")) {
-        await reporter.fail_and_continue("Element with id : " + id + " not found in " + wait_time_in_seconds + " seconds", true);
+        await reporter.fail("Element with id : " + id + " not found in " + wait_time_in_seconds + " seconds", true);
     } else {
         await reporter.warn("Element with id : " + id + " not found in " + wait_time_in_seconds + " seconds", true);
     }

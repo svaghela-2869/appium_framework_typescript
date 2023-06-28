@@ -1,0 +1,64 @@
+"launch_app","com.sound.it","src/_projects/sound_it/apps/sound-it-debug-20-6-23.apk",
+"wait_for_element_to_be_present_on_ui_with_id","SIGN UP","10",true
+"click_with_id","SIGN UP",,
+## Interest Selection Page
+"wait_for_element_to_be_present_on_ui_with_id","Motivation","10",true
+"click_with_id","Comedy",,
+"click_with_id","Society",,
+"click_with_id","Culture",,
+"click_with_id","Business",,
+"click_with_id","Health",,
+"click_with_id","CONTINUE",,
+## Describe Yourself Page
+"wait_for_element_to_be_present_on_ui_with_id","CREATOR","10",true
+"click_with_id","CREATOR",,
+"click_with_id","CONSUMER",,
+"set_text_with_xpath","//*[@hint='Search']","India",
+"click_with_id","India",,
+"sleep","3",,
+"click_with_id","CONTINUE",,
+## Name Selection Page
+"wait_for_element_to_be_present_on_ui_with_xpath","//*[@hint='Name']","10",true
+"set_text_with_xpath","//*[@hint='Name']","Azad",
+"sleep","3",,
+"click_with_id","CONTINUE",,
+## Birthday Selection Page
+"wait_for_element_to_be_present_on_ui_with_id","WHEN IT’S YOUR BIRTHDAY?","10",true
+"set_text_with_xpath","//*[@hint='DD/MM/YYYY']","30/08/1998",
+"sleep","3",,
+"click_with_id","CONTINUE",,
+## Username Selection Page
+"wait_for_element_to_be_present_on_ui_with_xpath","//*[@hint='Username']","10",true
+"set_text_with_xpath","//*[@hint='Username']","azad_{{XS}}",
+"sleep","3",,
+"click_with_id","CONTINUE",,
+## Create Account Page
+"wait_for_element_to_be_present_on_ui_with_xpath","//*[@hint='Email or Phone']","10",true
+"verify_element_on_ui_with_id","CONTINUE",,
+"verify_element_on_ui_with_id","Continue with Apple",,
+"verify_element_on_ui_with_id","Continue with Google",,
+"verify_element_on_ui_with_id","Continue with Twitter",,
+"verify_element_on_ui_with_xpath","//*[@content-desc=""Continue with Twitter""]//following-sibling::*[1]",,
+"verify_element_on_ui_with_id","By continuing, you agree to our  ",,
+"verify_element_on_ui_with_id","Terms and Conditions",,
+"verify_element_on_ui_with_id"," and confirm you have read SOUNDIT’s  ",,
+"verify_element_on_ui_with_id","Privacy Policy",,
+"set_text_with_xpath","//*[@hint='Email or Phone']","azad",
+"verify_element_enabled_with_id","CONTINUE","false",
+"click_with_id","CREATE AN ACCOUNT
+Enter your email or phone",,
+"click_with_xpath","//*[@content-desc=""Continue with Twitter""]//following-sibling::*[1]",,
+"verify_element_enabled_with_id","CONTINUE",,
+"click_with_id","CONTINUE",,
+"verify_element_on_ui_with_id","Please enter valid email",,
+"clear_text_with_xpath","//*[@hint='Email or Phone']",,
+"verify_element_enabled_with_id","CONTINUE","false",
+"set_text_with_xpath","//*[@hint='Email or Phone']","azad@gmail.com",
+## Check your email popup
+"wait_for_element_to_be_present_on_ui_with_id","Check your email
+We sent you a link to
+azad@gmail.com
+Click the link to log in or sign up
+EDIT EMAIL","10",true
+,,,
+,,,

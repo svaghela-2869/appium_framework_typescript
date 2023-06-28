@@ -17,6 +17,7 @@
 "click_with_id","CONSUMER",,
 "set_text_with_xpath","//*[@hint='Search']","India",
 "click_with_id","India",,
+"sleep","3",,
 "click_with_id","CONTINUE",,
 ## Name Selection Page
 "wait_for_element_to_be_present_on_ui_with_id","WHAT SHOULD WE CALL YOU?
