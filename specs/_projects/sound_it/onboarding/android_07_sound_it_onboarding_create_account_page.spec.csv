@@ -45,20 +45,19 @@
 "verify_element_on_ui_with_id","Privacy Policy",,
 "set_text_with_xpath","//*[@hint='Email or Phone']","azad",
 "verify_element_enabled_with_id","CONTINUE","false",
-"click_with_id","CREATE AN ACCOUNT
-Enter your email or phone",,
-"click_with_xpath","//*[@content-desc=""Continue with Twitter""]//following-sibling::*[1]",,
+"click_with_xpath","//*[@content-desc=""CREATE AN ACCOUNT
+Enter your email or phone""]/android.widget.ImageView",,
 "verify_element_enabled_with_id","CONTINUE",,
 "click_with_id","CONTINUE",,
 "verify_element_on_ui_with_id","Please enter valid email",,
 "clear_text_with_xpath","//*[@hint='Email or Phone']",,
 "verify_element_enabled_with_id","CONTINUE","false",
 "set_text_with_xpath","//*[@hint='Email or Phone']","azad@gmail.com",
+"verify_element_enabled_with_id","CONTINUE",,
+"click_with_id","CONTINUE",,
 ## Check your email popup
 "wait_for_element_to_be_present_on_ui_with_id","Check your email
 We sent you a link to
 azad@gmail.com
 Click the link to log in or sign up
 EDIT EMAIL","10",true
-,,,
-,,,
