@@ -231,9 +231,9 @@ export async function set_text_with_id(id: string, value: string) {
             await ele.setValue(value);
             await driver.hideKeyboard();
             await utils_common.sleep(1);
-            await reporter.pass("Value : " + value + " entered on element with xpath : " + id, true);
+            await reporter.pass("Value : " + value + " entered on element with id : " + id, true);
         } else {
-            await reporter.fail_and_continue("Element not found with xpath : " + id, true);
+            await reporter.fail_and_continue("Element not found with id : " + id, true);
         }
     } catch (error) {
         await reporter.fail("Got error while click : " + error);

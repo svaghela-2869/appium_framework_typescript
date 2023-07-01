@@ -1,0 +1,30 @@
+"launch_app","com.sound.it","src/_projects/sound_it/apps/sound-it-debug-20-6-23.apk",
+"wait_for_element_to_be_present_on_ui_with_id","Feed
+Tab 1 of 5","10",true
+"click_with_id","Profile
+Tab 5 of 5",,
+"wait_for_element_to_be_present_on_ui_with_id","@azad_web_clues","5",true
+"click_with_id","Feed
+Tab 1 of 5",,
+## Video Creation
+"click_with_id","Tab 3 of 5",,
+"wait_for_element_to_be_present_on_ui_with_id","VIDEO","10",true
+"click_with_id","VIDEO",,
+"wait_for_element_to_be_present_on_ui_with_xpath","//*[@resource-id='com.sound.it:id/cameraOverlayRecordButtonContainer']","10",true
+"sleep","3",,
+"click_with_xpath","//*[@resource-id='com.sound.it:id/cameraOverlayRecordButtonContainer']//android.widget.ImageView[1]",,
+"sleep","10",,
+"click_with_xpath","//*[@resource-id='com.sound.it:id/cameraOverlayRecordButtonContainer']//android.widget.ImageView[1]",,
+"click_with_xpath","//*[@resource-id='com.sound.it:id/cameraOverlayNextBtn']",,
+"click_with_xpath","//*[@resource-id='com.sound.it:id/trimmerActionDoneButton']",,
+"click_with_xpath","//*[@resource-id='com.sound.it:id/editorNextButton']",,
+"click_with_xpath","//*[@resource-id='com.sound.it:id/alertPositiveButton']",,
+"click_with_xpath","//*[@resource-id='com.sound.it:id/extendedCoverImageDoneButton']",,
+## Video Details
+"wait_for_element_to_be_present_on_ui_with_id","VIDEO","50",true
+"set_text_with_xpath","//*[@hint='Add a title to your creation.']","Video with minimum requirement.",
+"set_text_with_xpath","//*[@hint='Describe your video...']","Minimum caption.",
+"click_with_id","Everyone",,
+"click_with_id","PUBLISH",,
+"wait_for_element_to_be_present_on_ui_with_id","Feed
+Tab 1 of 5","100",true
