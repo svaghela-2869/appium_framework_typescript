@@ -4,10 +4,10 @@ import * as utils_common from "./utils_common";
 
 let driver: WebdriverIO.Browser;
 
-export async function launch_app(app_package_id_or_bundle_id: string, app_file_path?: string) {
+export async function launch_app(app_package_id_or_bundle_id: string, app_file_path?: string, reset_app?: boolean) {
     await reporter.entry_log("launch_app");
 
-    await globalConfig.install_app(app_package_id_or_bundle_id, app_file_path || "app_launch_without_file");
+    await globalConfig.install_app(app_package_id_or_bundle_id, app_file_path || "app_launch_without_file", Boolean(reset_app) || false);
 
     driver = globalConfig.driver;
 
@@ -58,15 +58,15 @@ export async function click_with_id(id: string) {
     await reporter.exit_log("click_with_id");
 }
 
-export async function verify_element_on_ui_with_xpath(xpath: string, should_exists: string = "true") {
+export async function verify_element_on_ui_with_xpath(xpath: string, should_exists: boolean = true) {
     await reporter.entry_log("verify_element_on_ui_with_xpath");
 
     await reporter.debug(xpath);
     let ele = await driver.$(xpath);
     try {
-        if (ele && should_exists.equalsIgnoreCase("true")) {
+        if ((ele && Boolean(should_exists) == true) || String(should_exists) == "true") {
             await reporter.pass("Element found using xpath : " + xpath, true);
-        } else if (ele && should_exists.equalsIgnoreCase("false")) {
+        } else if ((ele && Boolean(should_exists) == false) || String(should_exists) == "false") {
             await reporter.pass("Element not found on ui as expected using xpath : " + xpath, true);
         } else {
             await reporter.fail_and_continue("Element not found or not verified as per requirenment, should exists : " + should_exists, true);
@@ -78,15 +78,15 @@ export async function verify_element_on_ui_with_xpath(xpath: string, should_exis
     await reporter.exit_log("verify_element_on_ui_with_xpath");
 }
 
-export async function verify_element_on_ui_with_id(id: string, should_exists: string = "true") {
+export async function verify_element_on_ui_with_id(id: string, should_exists: boolean = true) {
     await reporter.entry_log("verify_element_on_ui_with_id");
 
     await reporter.debug(id);
     let ele = await driver.$("~" + id);
     try {
-        if (ele && should_exists.equalsIgnoreCase("true")) {
+        if ((ele && Boolean(should_exists) == true) || String(should_exists) == "true") {
             await reporter.pass("Element found using id : " + id, true);
-        } else if (ele && should_exists.equalsIgnoreCase("false")) {
+        } else if ((ele && Boolean(should_exists) == false) || String(should_exists) == "false") {
             await reporter.pass("Element not found on ui as expected using id : " + id, true);
         } else {
             await reporter.fail_and_continue("Element not found or not verified as per requirenment, should exists : " + should_exists, true);
@@ -98,15 +98,15 @@ export async function verify_element_on_ui_with_id(id: string, should_exists: st
     await reporter.exit_log("verify_element_on_ui_with_id");
 }
 
-export async function verify_element_enabled_with_xpath(xpath: string, should_be_enabled: string = "true") {
+export async function verify_element_enabled_with_xpath(xpath: string, should_be_enabled: boolean = true) {
     await reporter.entry_log("verify_element_enabled_with_xpath");
 
     await reporter.debug(xpath);
     let ele = await driver.$(xpath);
     try {
-        if (ele && (await ele.isEnabled()) && should_be_enabled.equalsIgnoreCase("true")) {
+        if ((ele && (await ele.isEnabled()) && Boolean(should_be_enabled) == true) || String(should_be_enabled) == "true") {
             await reporter.pass("Element found enabled using xpath : " + xpath, true);
-        } else if (ele && !(await ele.isEnabled()) && should_be_enabled.equalsIgnoreCase("false")) {
+        } else if ((ele && !(await ele.isEnabled()) && Boolean(should_be_enabled) == false) || String(should_be_enabled) == "false") {
             await reporter.pass("Element found disabled as expected using xpath : " + xpath, true);
         } else {
             await reporter.fail_and_continue("Element not found or not verified as per requirenment, enabled : " + should_be_enabled, true);
@@ -118,15 +118,15 @@ export async function verify_element_enabled_with_xpath(xpath: string, should_be
     await reporter.exit_log("verify_element_enabled_with_xpath");
 }
 
-export async function verify_element_enabled_with_id(id: string, should_be_enabled: string = "true") {
+export async function verify_element_enabled_with_id(id: string, should_be_enabled: boolean = true) {
     await reporter.entry_log("verify_element_enabled_with_id");
 
     await reporter.debug(id);
     let ele = await driver.$("~" + id);
     try {
-        if (ele && (await ele.isEnabled()) && should_be_enabled.equalsIgnoreCase("true")) {
+        if ((ele && (await ele.isEnabled()) && Boolean(should_be_enabled) == true) || String(should_be_enabled) == "true") {
             await reporter.pass("Element found enabled using id : " + id, true);
-        } else if (ele && !(await ele.isEnabled()) && should_be_enabled.equalsIgnoreCase("false")) {
+        } else if ((ele && !(await ele.isEnabled()) && Boolean(should_be_enabled) == false) || String(should_be_enabled) == "false") {
             await reporter.pass("Element found disabled as expected using id : " + id, true);
         } else {
             await reporter.fail_and_continue("Element not found or not verified as per requirenment, enabled : " + should_be_enabled, true);
@@ -138,7 +138,7 @@ export async function verify_element_enabled_with_id(id: string, should_be_enabl
     await reporter.exit_log("verify_element_enabled_with_id");
 }
 
-export async function wait_for_element_to_be_present_on_ui_with_xpath(xpath: string, wait_time_in_seconds: number, fail_test: string = "false") {
+export async function wait_for_element_to_be_present_on_ui_with_xpath(xpath: string, wait_time_in_seconds: number, fail_test: boolean = false) {
     await reporter.entry_log("wait_for_element_to_be_present_on_ui_with_xpath");
 
     await reporter.debug(xpath);
@@ -156,7 +156,7 @@ export async function wait_for_element_to_be_present_on_ui_with_xpath(xpath: str
         }
     }
 
-    if (fail_test.equalsIgnoreCase("true")) {
+    if (Boolean(fail_test) == true || String(fail_test) == "true") {
         await reporter.fail("Element with xpath : " + xpath + " not found in " + wait_time_in_seconds + " seconds", true);
     } else {
         await reporter.warn("Element with xpath : " + xpath + " not found in " + wait_time_in_seconds + " seconds", true);
@@ -166,7 +166,7 @@ export async function wait_for_element_to_be_present_on_ui_with_xpath(xpath: str
     return false;
 }
 
-export async function wait_for_element_to_be_present_on_ui_with_id(id: string, wait_time_in_seconds: number, fail_test: string = "false") {
+export async function wait_for_element_to_be_present_on_ui_with_id(id: string, wait_time_in_seconds: number, fail_test: boolean = false) {
     await reporter.entry_log("wait_for_element_to_be_present_on_ui_with_id");
 
     await reporter.debug(id);
@@ -184,7 +184,7 @@ export async function wait_for_element_to_be_present_on_ui_with_id(id: string, w
         }
     }
 
-    if (fail_test.equalsIgnoreCase("true")) {
+    if (Boolean(fail_test) == true || String(fail_test) == "true") {
         await reporter.fail("Element with id : " + id + " not found in " + wait_time_in_seconds + " seconds", true);
     } else {
         await reporter.warn("Element with id : " + id + " not found in " + wait_time_in_seconds + " seconds", true);
@@ -290,7 +290,7 @@ export async function sleep(seconds: number, screen_shot: boolean = false) {
     await reporter.entry_log("sleep");
 
     await utils_common.sleep(seconds);
-    if (screen_shot) {
+    if (screen_shot || String(screen_shot) == "true") {
         await reporter.pass(seconds + " second sleep done, time to wake up.", true);
     } else {
         await reporter.debug(seconds + " second sleep done, time to wake up.");
