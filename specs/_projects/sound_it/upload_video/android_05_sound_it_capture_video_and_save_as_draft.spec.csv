@@ -28,9 +28,8 @@ Tab 1 of 5",,
 "sleep","1",,
 ## Video Details
 "wait_for_element_to_be_present_on_ui_with_id","VIDEO","50",true
-"set_text_with_xpath","//*[@hint='Add a title to your creation.']","Video with person tagged in.",
-"set_text_with_xpath","//*[@hint='Describe your video...']","Minimum caption with @sagar_web_clues.",
-"click_with_id","Everyone",,
-"click_with_id","PUBLISH",,
+"set_text_with_xpath","//*[@hint='Add a title to your creation.']","Video will be draft.",
+"set_text_with_xpath","//*[@hint='Describe your video...']","Saving as draft.",
+"click_with_id","DRAFT",,
 "wait_for_element_to_be_present_on_ui_with_id","Feed
 Tab 1 of 5","100",true

@@ -28,8 +28,10 @@ Tab 1 of 5",,
 "sleep","1",,
 ## Video Details
 "wait_for_element_to_be_present_on_ui_with_id","VIDEO","50",true
-"set_text_with_xpath","//*[@hint='Add a title to your creation.']","Video with person tagged in.",
-"set_text_with_xpath","//*[@hint='Describe your video...']","Minimum caption with @sagar_web_clues.",
+"set_text_with_xpath","//*[@hint='Add a title to your creation.']","Video with tags.",
+"set_text_with_xpath","//*[@hint='Describe your video...']","Tags...",
+"set_text_with_xpath","//*[@hint='Ex: music, #audio, hiphop']","Azad"
+"set_text_with_xpath","//*[@hint='add more']","Tag"
 "click_with_id","Everyone",,
 "click_with_id","PUBLISH",,
 "wait_for_element_to_be_present_on_ui_with_id","Feed

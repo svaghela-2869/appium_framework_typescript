@@ -28,8 +28,9 @@ Tab 1 of 5",,
 "sleep","1",,
 ## Video Details
 "wait_for_element_to_be_present_on_ui_with_id","VIDEO","50",true
-"set_text_with_xpath","//*[@hint='Add a title to your creation.']","Video with person tagged in.",
-"set_text_with_xpath","//*[@hint='Describe your video...']","Minimum caption with @sagar_web_clues.",
+"set_text_with_xpath","//*[@hint='Add a title to your creation.']","Video as journal.",
+"set_text_with_xpath","//*[@hint='Describe your video...']","Journal...",
+"click_with_xpath","//android.view.View[@content-desc="Is this a Journal?"]//following-sibling::android.view.View[1]",
 "click_with_id","Everyone",,
 "click_with_id","PUBLISH",,
 "wait_for_element_to_be_present_on_ui_with_id","Feed
