@@ -298,3 +298,8 @@ export async function sleep(seconds: number, screen_shot: boolean = false) {
 
     await reporter.exit_log("sleep");
 }
+
+export async function scroll_on_element_with_xpath(x_offset: number, y_offset: number) {
+    // let ele = await driver.$(xpath);
+    await driver.scroll(Number(x_offset), Number(y_offset));
+}

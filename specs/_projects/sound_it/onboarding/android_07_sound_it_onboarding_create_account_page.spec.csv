@@ -1,4 +1,4 @@
-"launch_app","com.sound.it","src/_projects/sound_it/apps/sound-it-debug-20-6-23.apk",true
+"launch_app","com.sound.it","src/_projects/sound_it/apps/3-7-23-soundit-release.apk",true
 "wait_for_element_to_be_present_on_ui_with_id","SIGN UP","10",true
 "click_with_id","SIGN UP",,
 ## Interest Selection Page
