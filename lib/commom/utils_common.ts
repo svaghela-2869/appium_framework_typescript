@@ -190,6 +190,8 @@ function convert_step_array_to_map(data: string[]) {
         }
     }
 
+    // console.log(map);
+
     return map;
 }
 
