@@ -1,0 +1,141 @@
+,"launch_app","com.sound.it","src/_projects/sound_it/apps/3-7-23-soundit-release.apk",
+,"wait_for_element_to_be_present_on_ui_with_id","Feed
+Tab 1 of 5","15","true"
+"##","click_with_id","Profile
+Tab 5 of 5",,
+"##","wait_for_element_to_be_present_on_ui_with_id","@azad_web_clues","5","true"
+"##","click_with_id","Feed
+Tab 1 of 5",,
+"##","## Text Post Element Verification",,,
+"##","click_with_id","Tab 3 of 5",,
+"##","wait_for_element_to_be_present_on_ui_with_id","TEXT","10","true"
+"##","click_with_id","TEXT",,
+"##","verify_element_on_ui_with_xpath","(//android.widget.ImageView)[2]",,
+"##","verify_element_on_ui_with_id","Azad Web Clues",,
+"##","verify_element_on_ui_with_id","@azad_web_clues",,
+"##","verify_element_on_ui_with_id","0/180",,
+"##","verify_element_on_ui_with_xpath","(//*[@hint='What’s happening?'])[last()]",,
+"##","verify_element_on_ui_with_id","Add other text",,
+"##","verify_element_enabled_with_id","Add other text",,
+"##","verify_element_on_ui_with_xpath","//android.widget.ImageView[@content-desc='Add other text']//following-sibling::android.widget.ImageView[1]",,
+"##","verify_element_on_ui_with_xpath","//android.widget.ImageView[@content-desc='Add other text']//following-sibling::android.widget.ImageView[2]",,
+"##","verify_element_on_ui_with_xpath","//android.widget.ImageView[@content-desc='Add other text']//following-sibling::android.widget.ImageView[3]",,
+"##","verify_element_on_ui_with_xpath","//android.widget.ImageView[@content-desc='Add other text']//following-sibling::android.widget.ImageView[4]",,
+"##","verify_element_on_ui_with_id","Choose your background:",,
+"##","verify_element_on_ui_with_xpath","//android.view.View[@content-desc='Choose your background:']//following-sibling::android.view.View/android.view.View/android.view.View[1]",,
+"##","verify_element_on_ui_with_xpath","//android.view.View[@content-desc='Choose your background:']//following-sibling::android.view.View/android.view.View/android.view.View[2]",,
+"##","verify_element_on_ui_with_xpath","//android.view.View[@content-desc='Choose your background:']//following-sibling::android.view.View/android.view.View/android.view.View[3]",,
+"##","verify_element_on_ui_with_xpath","//android.view.View[@content-desc='Choose your background:']//following-sibling::android.view.View/android.view.View/android.view.View[4]",,
+"##","verify_element_on_ui_with_xpath","//android.view.View[@content-desc='Choose your background:']//following-sibling::android.view.View/android.view.View/android.view.View[5]",,
+"##","verify_element_on_ui_with_id","Who can read it?",,
+"##","verify_element_on_ui_with_xpath","(//android.view.View[@content-desc=""Everyone""])[1]",,
+"##","verify_element_on_ui_with_xpath","(//android.view.View[@content-desc=""Followers""])[1]",,
+"##","verify_element_on_ui_with_id","Who can reply?",,
+"##","verify_element_on_ui_with_xpath","(//android.view.View[@content-desc=""Everyone""])[2]",,
+"##","verify_element_on_ui_with_xpath","(//android.view.View[@content-desc=""Followers""])[2]",,
+"##","verify_element_on_ui_with_xpath","//android.view.View[@content-desc=""Mentioned""]",,
+"##","verify_element_enabled_with_id","PUBLISH","false",
+"##","click_with_xpath","(//android.widget.ImageView)[1]",,
+"##","wait_for_element_to_be_present_on_ui_with_id","Feed
+Tab 1 of 5","5","true"
+"##","## Create Basic Text Post With Everyone Read & Reply",,,
+"##","click_with_id","Tab 3 of 5",,
+"##","wait_for_element_to_be_present_on_ui_with_id","TEXT","10","true"
+"##","click_with_id","TEXT",,
+"##","set_text_with_xpath","(//*[@hint='What’s happening?'])[last()]","1. Text Post With Everyone Read & Reply",
+"##","click_with_xpath","//android.view.View[@content-desc='Choose your background:']//following-sibling::android.view.View/android.view.View/android.view.View[1]",,
+"##","click_with_xpath","(//android.view.View[@content-desc=""Everyone""])[1]",,
+"##","click_with_xpath","(//android.view.View[@content-desc=""Everyone""])[2]",,
+"##","verify_element_enabled_with_id","PUBLISH",,
+"##","click_with_id","PUBLISH",,
+"##","wait_for_element_to_be_present_on_ui_with_id","Feed
+Tab 1 of 5","5","true"
+"##","## Create Basic Text Post With Everyone Read & Followers Reply",,,
+"##","click_with_id","Tab 3 of 5",,
+"##","wait_for_element_to_be_present_on_ui_with_id","TEXT","10","true"
+"##","click_with_id","TEXT",,
+"##","set_text_with_xpath","(//*[@hint='What’s happening?'])[last()]","2. Text Post With Everyone Read & Followers Reply",
+"##","click_with_xpath","//android.view.View[@content-desc='Choose your background:']//following-sibling::android.view.View/android.view.View/android.view.View[2]",,
+"##","click_with_xpath","(//android.view.View[@content-desc=""Everyone""])[1]",,
+"##","click_with_xpath","(//android.view.View[@content-desc=""Followers""])[2]",,
+"##","verify_element_enabled_with_id","PUBLISH",,
+"##","click_with_id","PUBLISH",,
+"##","wait_for_element_to_be_present_on_ui_with_id","Feed
+Tab 1 of 5","5","true"
+"##","## Create Basic Text Post With Everyone Read & Mentioned Reply",,,
+"##","click_with_id","Tab 3 of 5",,
+"##","wait_for_element_to_be_present_on_ui_with_id","TEXT","10","true"
+"##","click_with_id","TEXT",,
+"##","set_text_with_xpath","(//*[@hint='What’s happening?'])[last()]","3. Text Post With Everyone Read & Mentioned Reply",
+"##","click_with_xpath","//android.view.View[@content-desc='Choose your background:']//following-sibling::android.view.View/android.view.View/android.view.View[3]",,
+"##","click_with_xpath","(//android.view.View[@content-desc=""Everyone""])[1]",,
+"##","click_with_xpath","//android.view.View[@content-desc=""Mentioned""]",,
+"##","verify_element_enabled_with_id","PUBLISH",,
+"##","click_with_id","PUBLISH",,
+"##","wait_for_element_to_be_present_on_ui_with_id","Feed
+Tab 1 of 5","5","true"
+"##","## Create Basic Text Post With Followers Read & Everyone Reply",,,
+"##","click_with_id","Tab 3 of 5",,
+"##","wait_for_element_to_be_present_on_ui_with_id","TEXT","10","true"
+"##","click_with_id","TEXT",,
+"##","set_text_with_xpath","(//*[@hint='What’s happening?'])[last()]","4. Text Post With Followers Read & Everyone Reply",
+"##","click_with_xpath","//android.view.View[@content-desc='Choose your background:']//following-sibling::android.view.View/android.view.View/android.view.View[4]",,
+"##","click_with_xpath","(//android.view.View[@content-desc=""Followers""])[1]",,
+"##","click_with_xpath","(//android.view.View[@content-desc=""Everyone""])[2]",,
+"##","verify_element_enabled_with_id","PUBLISH",,
+"##","click_with_id","PUBLISH",,
+"##","wait_for_element_to_be_present_on_ui_with_id","Feed
+Tab 1 of 5","5","true"
+"##","## Create Basic Text Post With Followers Read & Reply",,,
+"##","click_with_id","Tab 3 of 5",,
+"##","wait_for_element_to_be_present_on_ui_with_id","TEXT","10","true"
+"##","click_with_id","TEXT",,
+"##","set_text_with_xpath","(//*[@hint='What’s happening?'])[last()]","5. Text Post With Followers Read & Reply",
+"##","click_with_xpath","//android.view.View[@content-desc='Choose your background:']//following-sibling::android.view.View/android.view.View/android.view.View[5]",,
+"##","click_with_xpath","(//android.view.View[@content-desc=""Followers""])[1]",,
+"##","click_with_xpath","(//android.view.View[@content-desc=""Followers""])[2]",,
+"##","verify_element_enabled_with_id","PUBLISH",,
+"##","click_with_id","PUBLISH",,
+"##","wait_for_element_to_be_present_on_ui_with_id","Feed
+Tab 1 of 5","5","true"
+"##","## Create Basic Text Post With Followers Read & Mentioned Reply",,,
+"##","click_with_id","Tab 3 of 5",,
+"##","wait_for_element_to_be_present_on_ui_with_id","TEXT","10","true"
+"##","click_with_id","TEXT",,
+"##","set_text_with_xpath","(//*[@hint='What’s happening?'])[last()]","6. Text Post With Followers Read & Mentioned Reply",
+"##","click_with_xpath","//android.view.View[@content-desc='Choose your background:']//following-sibling::android.view.View/android.view.View/android.view.View[1]",,
+"##","click_with_xpath","(//android.view.View[@content-desc=""Followers""])[1]",,
+"##","click_with_xpath","//android.view.View[@content-desc=""Mentioned""]",,
+"##","verify_element_enabled_with_id","PUBLISH",,
+"##","click_with_id","PUBLISH",,
+"##","wait_for_element_to_be_present_on_ui_with_id","Feed
+Tab 1 of 5","5","true"
+"##","## Scrolling",,,
+,"click_with_id","Tab 3 of 5",,
+,"wait_for_element_to_be_present_on_ui_with_id","TEXT","10","true"
+,"click_with_id","TEXT",,
+,"set_text_with_xpath","(//*[@hint='What’s happening?'])[last()]",1,
+,"click_with_xpath","//*[contains(@content-desc,'Add other text')]",,
+,"scroll_on_element_with_xpath","Who can reply?",,
+,"set_text_with_xpath","(//*[@hint='What’s happening?'])[last()]",2,
+,"click_with_xpath","//*[contains(@content-desc,'Add other text')]",,
+,"scroll_on_element_with_xpath","Who can reply?",,
+,"set_text_with_xpath","(//*[@hint='What’s happening?'])[last()]",3,
+,"click_with_xpath","//*[contains(@content-desc,'Add other text')]",,
+,"scroll_on_element_with_xpath","Who can reply?",,
+"##","## Text Post With Audio",,,
+"##","click_with_id","Tab 3 of 5",,
+"##","wait_for_element_to_be_present_on_ui_with_id","TEXT","10","true"
+"##","click_with_id","TEXT",,
+"##","click_with_xpath","//android.widget.ImageView[@content-desc='Add other text']//following-sibling::android.widget.ImageView[1]",,
+"##","click_with_xpath","//android.view.View[@content-desc=""The next 180 seconds are entirely yours for your creation.""]//following-sibling::android.view.View[1]",,
+"##","sleep",10,,
+"##","click_with_xpath","(//android.widget.ImageView)[last()]",,
+"##","set_text_with_xpath","(//*[@hint='What’s happening?'])[last()]","1. Text Post With Everyone Read & Reply",
+"##","click_with_xpath","//android.view.View[@content-desc='Choose your background:']//following-sibling::android.view.View/android.view.View/android.view.View[1]",,
+"##","click_with_xpath","(//android.view.View[@content-desc=""Everyone""])[1]",,
+"##","click_with_xpath","(//android.view.View[@content-desc=""Everyone""])[2]",,
+"##","verify_element_enabled_with_id","PUBLISH",,
+"##","click_with_id","PUBLISH",,
+"##","wait_for_element_to_be_present_on_ui_with_id","Feed
+Tab 1 of 5","5","true"

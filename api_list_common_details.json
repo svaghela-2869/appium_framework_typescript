@@ -71,6 +71,11 @@
             "path": "lib/commom/uihelper"
         },
         {
+            "description": "Scroll with Element XPath.",
+            "name": "scroll_on_element_with_xpath",
+            "path": "lib/commom/uihelper"
+        },
+        {
             "description": "Sound it - New Onboarding V1",
             "name": "sound_it_onboarding",
             "path": "lib/_projects/sound_it"

@@ -5,3 +5,29 @@
 ## example mac : ios => iPhone 14 => specs/_demo/ios_setting_app.spec.ts
 ## example windows : android => emulator-5554 => specs\_demo\android_setting_app.spec.ts
 ## 
+## On Boarding
+## 
+## android => emulator-5554 => specs/_projects/sound_it/onboarding/android_01_sound_it_onboarding_home_page.spec.ts
+## android => emulator-5554 => specs/_projects/sound_it/onboarding/android_02_sound_it_onboarding_Interest_selection_page.spec.ts
+## android => emulator-5554 => specs/_projects/sound_it/onboarding/android_03_sound_it_onboarding_describe_yourself_page.spec.ts
+## android => emulator-5554 => specs/_projects/sound_it/onboarding/android_04_sound_it_onboarding_name_selection_page.spec.ts
+## android => emulator-5554 => specs/_projects/sound_it/onboarding/android_05_sound_it_onboarding_bithday_selection_page.spec.ts
+## android => emulator-5554 => specs/_projects/sound_it/onboarding/android_06_sound_it_onboarding_username_selection_page.spec.ts
+## android => emulator-5554 => specs/_projects/sound_it/onboarding/android_07_sound_it_onboarding_create_account_page.spec.ts
+## 
+## Upload Video Post
+## 
+## android => 2A111FDH2004Q6 => specs/_projects/sound_it/upload_video/android_01_sound_it_capture_video_and_publish_with_minimum_requirements.spec.ts
+## android => 2A111FDH2004Q6 => specs/_projects/sound_it/upload_video/android_02_sound_it_capture_video_and_publish_with_person_tagged_in_caption.spec.ts
+## android => 2A111FDH2004Q6 => specs/_projects/sound_it/upload_video/android_03_sound_it_capture_video_and_publish_as_a_journal.spec.ts
+## android => 2A111FDH2004Q6 => specs/_projects/sound_it/upload_video/android_04_sound_it_capture_video_and_publish_with_tags.spec.ts
+## android => 2A111FDH2004Q6 => specs/_projects/sound_it/upload_video/android_05_sound_it_capture_video_and_save_as_draft.spec.ts
+## android => 2A111FDH2004Q6 => specs/_projects/sound_it/upload_video/android_06_sound_it_capture_video_and_publish_with_privacy_follower.spec.ts
+## android => 2A111FDH2004Q6 => specs/_projects/sound_it/upload_video/android_07_sound_it_capture_video_and_publish_with_privacy_private.spec.ts
+## 
+## Share Post
+## 
+## android => emulator-5554 => specs/_projects/sound_it/share_video/android_01_sound_it_share_video_options_from_profile.spec.ts
+##
+## Upload Text Post
+android => emulator-5554 => specs/_projects/sound_it/share_text/android_01_sound_it_create_text_post.spec.ts

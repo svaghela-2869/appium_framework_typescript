@@ -104,7 +104,7 @@ export async function verify_element_enabled_with_xpath(xpath: string, should_be
     await reporter.debug(xpath);
     let ele = await driver.$(xpath);
     try {
-        if ((ele && (await ele.isEnabled()) && Boolean(should_be_enabled) == true) || String(should_be_enabled) == "true") {
+        if (ele && (await ele.isEnabled()) && (Boolean(should_be_enabled) == true || String(should_be_enabled) == "true")) {
             await reporter.pass("Element found enabled using xpath : " + xpath, true);
         } else if ((ele && !(await ele.isEnabled()) && Boolean(should_be_enabled) == false) || String(should_be_enabled) == "false") {
             await reporter.pass("Element found disabled as expected using xpath : " + xpath, true);
@@ -124,7 +124,7 @@ export async function verify_element_enabled_with_id(id: string, should_be_enabl
     await reporter.debug(id);
     let ele = await driver.$("~" + id);
     try {
-        if ((ele && (await ele.isEnabled()) && Boolean(should_be_enabled) == true) || String(should_be_enabled) == "true") {
+        if (ele && (await ele.isEnabled()) && (Boolean(should_be_enabled) == true || String(should_be_enabled) == "true")) {
             await reporter.pass("Element found enabled using id : " + id, true);
         } else if ((ele && !(await ele.isEnabled()) && Boolean(should_be_enabled) == false) || String(should_be_enabled) == "false") {
             await reporter.pass("Element found disabled as expected using id : " + id, true);
@@ -299,7 +299,11 @@ export async function sleep(seconds: number, screen_shot: boolean = false) {
     await reporter.exit_log("sleep");
 }
 
-export async function scroll_on_element_with_xpath(x_offset: number, y_offset: number) {
-    // let ele = await driver.$(xpath);
-    await driver.scroll(Number(x_offset), Number(y_offset));
+export async function scroll_on_element_with_xpath(element_id: string) {
+    let ele_id = await driver.$(element_id).elementId;
+    await reporter.info("ele_id to scroll : " + ele_id);
+    // await driver.scroll(Number(x_offset), Number(y_offset));
+    await driver.execute("mobile: scroll", { strategy: "accessibility id", selector: "~" + element_id });
+    // driver.execute("flutter:scroll", find.byType("ListView"), { dx: 50, dy: -100, durationMilliseconds: 200, frequency: 30 });
+    // await driver.executeScript("arguments[0].scrollIntoView(false);", element_xpath);
 }
