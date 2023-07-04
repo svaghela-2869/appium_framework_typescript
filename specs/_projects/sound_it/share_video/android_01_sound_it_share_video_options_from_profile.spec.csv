@@ -1,0 +1,51 @@
+"launch_app","com.sound.it","src/_projects/sound_it/apps/3-7-23-soundit-release.apk",
+"wait_for_element_to_be_present_on_ui_with_id","Feed
+Tab 1 of 5","15","true"
+"click_with_id","Profile
+Tab 5 of 5",,
+"wait_for_element_to_be_present_on_ui_with_id","@azad_web_clues","5","true"
+"click_with_id","Feed
+Tab 1 of 5",,
+"## Video Creation",,,
+"click_with_id","Tab 3 of 5",,
+"wait_for_element_to_be_present_on_ui_with_id","VIDEO","10","true"
+"click_with_id","VIDEO",,
+"wait_for_element_to_be_present_on_ui_with_xpath","//*[@resource-id='com.sound.it:id/cameraOverlayRecordButtonContainer']","10","true"
+"sleep","3",,
+"click_with_xpath","//*[@resource-id='com.sound.it:id/cameraOverlayRecordButtonContainer']//android.widget.ImageView[1]",,
+"sleep","10",,
+"click_with_xpath","//*[@resource-id='com.sound.it:id/cameraOverlayRecordButtonContainer']//android.widget.ImageView[1]",,
+"sleep","1",,
+"click_with_xpath","//*[@resource-id='com.sound.it:id/cameraOverlayNextBtn']",,
+"sleep","1",,
+"click_with_xpath","//*[@resource-id='com.sound.it:id/trimmerActionDoneButton']",,
+"sleep","1",,
+"click_with_xpath","//*[@resource-id='com.sound.it:id/editorNextButton']",,
+"sleep","1",,
+"click_with_xpath","//*[@resource-id='com.sound.it:id/alertPositiveButton']",,
+"sleep","1",,
+"click_with_xpath","//*[@resource-id='com.sound.it:id/extendedCoverImageDoneButton']",,
+"sleep","1",,
+"## Video Details",,,
+"wait_for_element_to_be_present_on_ui_with_id","VIDEO","50","true"
+"set_text_with_xpath","//*[@hint='Add a title to your creation.']","Profile Share.",
+"set_text_with_xpath","//*[@hint='Describe your video...']","Video share option from profile.",
+"click_with_id","Everyone",,
+"click_with_id","PUBLISH",,
+"wait_for_element_to_be_present_on_ui_with_id","Feed
+Tab 1 of 5","100","true"
+"## Verify Share Video Option From Profile",,,
+"click_with_id","Profile
+Tab 5 of 5",,
+"click_with_id","Tab 1 of 4",,
+"sleep",10,,
+"click_with_xpath","(//android.widget.ImageView[@content-desc='Tab 4 of 4']//following-sibling::android.view.View[1]//android.view.View[not ( contains(@content-desc,'Drafts'))])[last()]",,
+"verify_element_on_ui_with_id","Profile Share.",,
+"verify_element_on_ui_with_id","Video share option from profile.",,
+"verify_element_on_ui_with_xpath","//android.view.View[@content-desc='@azad_web_clues']//following-sibling::android.widget.ImageView[3]",,
+"click_with_xpath","//android.view.View[@content-desc='@azad_web_clues']//following-sibling::android.widget.ImageView[3]",,
+"wait_for_element_to_be_present_on_ui_with_id","SHARE",5,"true"
+"click_with_id","SHARE",,
+"wait_for_element_to_be_present_on_ui_with_xpath","//*[@resource-id='android:id/chooser_header']",5,"true"
+"click_with_xpath","//*[@resource-id='android:id/chooser_copy_button']",,
+"click_with_xpath","//android.view.View[@content-desc='DM your friends']//following-sibling::*[1]",,
